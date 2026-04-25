@@ -14,40 +14,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ============================================
-           CSS VARIABLES - NOIR AND CRIMSON THEME
-           ============================================ */
         :root {
-            --primary-dark: #080808;
-            --secondary-dark: #0e0e0e;
-            --tertiary-dark: #161616;
-            --card-dark: #111111;
-            --crimson-primary: #c0392b;
-            --crimson-light: #e74c3c;
-            --crimson-dark: #962d22;
-            --crimson-deeper: #7b241c;
-            --crimson-glow: rgba(192, 57, 43, 0.3);
-            --crimson-subtle: rgba(192, 57, 43, 0.08);
-            --crimson-hover: rgba(231, 76, 60, 0.15);
-            --accent-warm: #d4a574;
-            --text-white: #f5f5f5;
-            --text-light: #cccccc;
-            --text-muted: #888888;
-            --text-dim: #555555;
-            --border-subtle: rgba(192, 57, 43, 0.2);
-            --border-light: rgba(255, 255, 255, 0.06);
-            --border-crimson: rgba(192, 57, 43, 0.35);
-            --gradient-crimson: linear-gradient(135deg, #c0392b, #e74c3c, #962d22);
-            --gradient-crimson-dark: linear-gradient(135deg, #962d22, #c0392b);
-            --gradient-crimson-subtle: linear-gradient(135deg, rgba(192, 57, 43, 0.1), rgba(231, 76, 60, 0.05));
-            --gradient-dark: linear-gradient(180deg, #080808 0%, #0e0e0e 100%);
-            --shadow-crimson: 0 0 40px rgba(192, 57, 43, 0.2);
-            --shadow-crimson-strong: 0 0 60px rgba(192, 57, 43, 0.3);
-            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
-            --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.6);
+            /* Navy Blues */
+            --navy-deep: #0a1628;
+            --navy-primary: #0f2044;
+            --navy-medium: #142952;
+            --navy-light: #1a3366;
+            --navy-bright: #1e3d7a;
+
+            /* Royal Blues */
+            --royal-primary: #2563eb;
+            --royal-light: #3b82f6;
+            --royal-soft: #60a5fa;
+            --royal-pale: #93c5fd;
+
+            /* Whites */
+            --white-pure: #ffffff;
+            --white-soft: #f8fafc;
+            --white-muted: #e2e8f0;
+            --white-dim: #cbd5e1;
+            --white-faded: #94a3b8;
+
+            /* Yellow Accents */
+            --yellow-primary: #f59e0b;
+            --yellow-bright: #fbbf24;
+            --yellow-light: #fcd34d;
+            --yellow-soft: #fef3c7;
+            --yellow-glow: rgba(245, 158, 11, 0.3);
+            --yellow-subtle: rgba(245, 158, 11, 0.08);
+
+            /* Functional */
+            --card-bg: #0f2044;
+            --card-bg-light: #142952;
+            --border-navy: rgba(37, 99, 235, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-yellow: rgba(245, 158, 11, 0.25);
+
+            /* Gradients */
+            --gradient-royal: linear-gradient(135deg, #2563eb, #3b82f6, #1d4ed8);
+            --gradient-yellow: linear-gradient(135deg, #f59e0b, #fbbf24);
+            --gradient-navy: linear-gradient(180deg, #0a1628 0%, #0f2044 100%);
+            --gradient-hero: linear-gradient(135deg, #0a1628 0%, #0f2044 40%, #142952 100%);
+            --gradient-card: linear-gradient(145deg, #0f2044, #142952);
+            --gradient-royal-yellow: linear-gradient(135deg, #2563eb, #f59e0b);
+
+            /* Shadows */
+            --shadow-royal: 0 0 40px rgba(37, 99, 235, 0.2);
+            --shadow-royal-strong: 0 0 60px rgba(37, 99, 235, 0.3);
+            --shadow-yellow: 0 0 40px rgba(245, 158, 11, 0.15);
+            --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+            /* Typography */
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
             --font-elegant: 'Cormorant Garamond', serif;
+
+            /* Transitions */
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
@@ -61,7 +84,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-dark);
+            background: var(--navy-deep);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -79,48 +102,52 @@
             font-family: var(--font-heading);
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--crimson-primary);
+            color: var(--white-pure);
             letter-spacing: 4px;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             opacity: 0;
             animation: fadeInUp 1s ease forwards;
         }
 
+        .preloader-logo span {
+            color: var(--yellow-primary);
+        }
+
+        .preloader-tagline {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--royal-soft);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
         .preloader-bar-container {
             width: 300px;
-            height: 2px;
-            background: var(--tertiary-dark);
-            border-radius: 2px;
+            height: 3px;
+            background: var(--navy-medium);
+            border-radius: 3px;
             overflow: hidden;
             opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
+            animation: fadeInUp 1s ease 0.4s forwards;
         }
 
         .preloader-bar {
             width: 0%;
             height: 100%;
-            background: var(--gradient-crimson);
-            border-radius: 2px;
-            animation: loadBar 2s ease forwards 0.5s;
+            background: var(--gradient-royal-yellow);
+            border-radius: 3px;
+            animation: loadBar 2s ease forwards 0.6s;
         }
 
         .preloader-text {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .preloader-subtitle {
             font-family: var(--font-elegant);
-            font-size: 1rem;
-            color: var(--crimson-light);
+            font-size: 1.1rem;
             font-style: italic;
-            margin-top: 10px;
+            color: var(--yellow-bright);
+            margin-top: 25px;
             opacity: 0;
             animation: fadeInUp 1s ease 0.8s forwards;
         }
@@ -137,7 +164,7 @@
         }
 
         /* ============================================
-           GLOBAL RESET & BASE STYLES
+           GLOBAL RESET & BASE
            ============================================ */
         *, *::before, *::after {
             margin: 0;
@@ -153,8 +180,8 @@
 
         body {
             font-family: var(--font-body);
-            background: var(--primary-dark);
-            color: var(--text-light);
+            background: var(--navy-deep);
+            color: var(--white-muted);
             line-height: 1.8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -162,8 +189,8 @@
         }
 
         ::selection {
-            background: var(--crimson-primary);
-            color: var(--text-white);
+            background: var(--royal-primary);
+            color: var(--white-pure);
         }
 
         a {
@@ -172,10 +199,7 @@
             transition: var(--transition-smooth);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        img { max-width: 100%; height: auto; }
 
         /* ============================================
            SCROLL ANIMATIONS
@@ -186,44 +210,28 @@
             transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                         transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         .reveal-left {
             opacity: 0;
             transform: translateX(-80px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
 
         .reveal-right {
             opacity: 0;
             transform: translateX(80px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
 
         .reveal-scale {
             opacity: 0;
             transform: scale(0.85);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
 
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
@@ -233,24 +241,12 @@
         .stagger-6 { transition-delay: 0.6s; }
 
         /* ============================================
-           CUSTOM SCROLLBAR
+           SCROLLBAR
            ============================================ */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--primary-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--crimson-dark);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--crimson-primary);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--navy-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--royal-primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--royal-light); }
 
         /* ============================================
            NAVIGATION
@@ -270,11 +266,11 @@
         }
 
         .navbar.scrolled {
-            background: rgba(8, 8, 8, 0.95);
+            background: rgba(10, 22, 40, 0.95);
             backdrop-filter: blur(20px);
             padding: 15px 60px;
-            border-bottom: 1px solid var(--border-subtle);
-            box-shadow: 0 4px 30px rgba(192, 57, 43, 0.1);
+            border-bottom: 1px solid var(--border-navy);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-logo {
@@ -286,28 +282,28 @@
         .nav-logo-icon {
             width: 42px;
             height: 42px;
-            background: var(--gradient-crimson);
-            border-radius: 8px;
+            background: var(--gradient-royal);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-heading);
             font-weight: 800;
             font-size: 1.3rem;
-            color: var(--text-white);
-            box-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
+            color: var(--white-pure);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
 
         .nav-logo-text {
             font-family: var(--font-heading);
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
             letter-spacing: 1px;
         }
 
         .nav-logo-text span {
-            color: var(--crimson-primary);
+            color: var(--yellow-primary);
         }
 
         .nav-links {
@@ -321,7 +317,7 @@
             font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--white-dim);
             letter-spacing: 1.5px;
             text-transform: uppercase;
             position: relative;
@@ -335,12 +331,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--crimson-light);
+            color: var(--white-pure);
         }
 
         .nav-links a:hover::after {
@@ -351,24 +347,22 @@
             font-family: var(--font-body);
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--text-white) !important;
-            background: var(--gradient-crimson);
+            color: var(--white-pure) !important;
+            background: var(--gradient-royal);
             padding: 10px 25px;
-            border-radius: 4px;
+            border-radius: 6px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
 
-        .nav-cta::after {
-            display: none !important;
-        }
+        .nav-cta::after { display: none !important; }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-crimson-strong);
-            color: var(--text-white) !important;
+            box-shadow: var(--shadow-royal-strong);
+            color: var(--white-pure) !important;
         }
 
         .mobile-menu-btn {
@@ -385,22 +379,14 @@
         .mobile-menu-btn span {
             width: 28px;
             height: 2px;
-            background: var(--crimson-primary);
+            background: var(--royal-light);
             transition: var(--transition-smooth);
             display: block;
         }
 
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
+        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
         /* ============================================
            HERO SECTION
@@ -412,6 +398,7 @@
             position: relative;
             overflow: hidden;
             padding: 120px 60px 80px;
+            background: var(--gradient-hero);
         }
 
         .hero-bg-elements {
@@ -427,35 +414,13 @@
         .hero-bg-circle {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(37, 99, 235, 0.1);
             animation: floatCircle 20s ease-in-out infinite;
         }
 
-        .hero-bg-circle:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -200px;
-            opacity: 0.3;
-        }
-
-        .hero-bg-circle:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -100px;
-            opacity: 0.2;
-            animation-delay: -5s;
-        }
-
-        .hero-bg-circle:nth-child(3) {
-            width: 200px;
-            height: 200px;
-            top: 40%;
-            right: 20%;
-            opacity: 0.15;
-            animation-delay: -10s;
-        }
+        .hero-bg-circle:nth-child(1) { width: 600px; height: 600px; top: -200px; right: -200px; opacity: 0.4; }
+        .hero-bg-circle:nth-child(2) { width: 400px; height: 400px; bottom: -100px; left: -100px; opacity: 0.3; animation-delay: -5s; }
+        .hero-bg-circle:nth-child(3) { width: 250px; height: 250px; top: 40%; right: 20%; opacity: 0.2; animation-delay: -10s; border-color: rgba(245, 158, 11, 0.1); }
 
         @keyframes floatCircle {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -469,8 +434,8 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(192, 57, 43, 0.15) 0%, rgba(192, 57, 43, 0.05) 40%, transparent 70%);
-            top: 15%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.04) 40%, transparent 70%);
+            top: 10%;
             right: 5%;
             animation: pulseOrb 8s ease-in-out infinite;
             pointer-events: none;
@@ -478,19 +443,19 @@
 
         .hero-gradient-orb-2 {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%);
-            bottom: 10%;
-            left: 5%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+            bottom: 15%;
+            left: 10%;
             animation: pulseOrb 10s ease-in-out infinite reverse;
             pointer-events: none;
         }
 
         @keyframes pulseOrb {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.3); opacity: 0.8; }
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 0.9; }
         }
 
         .hero-content {
@@ -505,65 +470,51 @@
             z-index: 2;
         }
 
-        .hero-text {
-            max-width: 750px;
-        }
+        .hero-text { max-width: 750px; }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 20px;
-            border: 1px solid var(--border-crimson);
+            padding: 8px 22px;
+            border: 1px solid var(--border-yellow);
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             margin-bottom: 30px;
-            background: var(--crimson-subtle);
+            background: var(--yellow-subtle);
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards 0.5s;
         }
 
-        .hero-badge i {
-            font-size: 0.6rem;
-            color: var(--crimson-light);
-        }
+        .hero-badge i { font-size: 0.55rem; color: var(--yellow-primary); }
 
         .hero-title {
             font-family: var(--font-heading);
             font-size: 3.8rem;
             font-weight: 800;
             line-height: 1.15;
-            color: var(--text-white);
+            color: var(--white-pure);
             margin-bottom: 25px;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards 0.7s;
         }
 
-        .hero-title .crimson {
-            color: var(--crimson-light);
-            position: relative;
-        }
-
-        .hero-title .crimson::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-crimson);
-            opacity: 0.5;
+        .hero-title .accent {
+            background: var(--gradient-royal-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
             font-family: var(--font-body);
             font-size: 1.05rem;
             line-height: 1.9;
-            color: var(--text-light);
+            color: var(--white-dim);
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards 0.9s;
@@ -573,12 +524,12 @@
             font-family: var(--font-elegant);
             font-size: 1.2rem;
             font-style: italic;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             margin-bottom: 40px;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards 1s;
             padding-left: 20px;
-            border-left: 3px solid var(--crimson-primary);
+            border-left: 3px solid var(--yellow-primary);
         }
 
         .hero-cta-group {
@@ -595,23 +546,23 @@
             align-items: center;
             gap: 10px;
             padding: 16px 35px;
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             transition: var(--transition-smooth);
-            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-crimson-strong);
+            box-shadow: var(--shadow-royal-strong);
         }
 
         .btn-secondary {
@@ -620,22 +571,22 @@
             gap: 10px;
             padding: 16px 35px;
             background: transparent;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             font-family: var(--font-body);
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            border: 1px solid var(--crimson-primary);
-            border-radius: 4px;
+            border: 1px solid var(--yellow-primary);
+            border-radius: 6px;
             cursor: pointer;
             transition: var(--transition-smooth);
         }
 
         .btn-secondary:hover {
-            background: var(--crimson-subtle);
+            background: var(--yellow-subtle);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-yellow);
         }
 
         .hero-image-section {
@@ -659,69 +610,69 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--crimson-primary);
-            border-radius: 12px;
+            border: 2px solid var(--royal-primary);
+            border-radius: 16px;
             transform: translate(15px, 15px);
-            opacity: 0.3;
+            opacity: 0.25;
         }
 
         .hero-profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 16px;
             position: relative;
             z-index: 2;
-            filter: grayscale(20%) contrast(1.05);
+            border: 2px solid rgba(37, 99, 235, 0.3);
             transition: var(--transition-smooth);
-            border: 1px solid rgba(192, 57, 43, 0.2);
         }
 
         .hero-profile-img:hover {
-            filter: grayscale(0%) contrast(1.1);
             transform: scale(1.02);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
+            border-color: var(--royal-primary);
         }
 
         .hero-profile-badge {
             position: absolute;
             bottom: -20px;
             right: -20px;
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-yellow);
+            color: var(--navy-deep);
             padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: var(--font-body);
             font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
             z-index: 3;
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-yellow);
         }
 
         .hero-stats {
             position: absolute;
             top: -15px;
             left: -25px;
-            background: var(--card-dark);
-            border: 1px solid var(--border-subtle);
+            background: var(--navy-primary);
+            border: 1px solid var(--border-navy);
             padding: 15px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             z-index: 3;
             text-align: center;
+            box-shadow: var(--shadow-card);
         }
 
         .hero-stats-number {
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
         }
 
         .hero-stats-label {
             font-size: 0.65rem;
-            color: var(--text-muted);
+            color: var(--white-faded);
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -730,12 +681,12 @@
            TRUST BAR
            ============================================ */
         .trust-bar {
-            background: var(--secondary-dark);
+            background: var(--navy-primary);
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
             padding: 40px 60px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
         .trust-bar::before {
@@ -744,8 +695,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--crimson-primary), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--royal-primary), var(--yellow-primary), transparent);
             opacity: 0.5;
         }
 
@@ -764,17 +715,14 @@
             align-items: center;
             gap: 12px;
             font-size: 0.8rem;
-            color: var(--text-muted);
+            color: var(--white-dim);
             letter-spacing: 0.5px;
         }
 
-        .trust-item i {
-            color: var(--crimson-light);
-            font-size: 0.9rem;
-        }
+        .trust-item i { color: var(--yellow-primary); font-size: 0.9rem; }
 
         /* ============================================
-           SECTION COMMON STYLES
+           SECTION COMMON
            ============================================ */
         .section {
             padding: 120px 60px;
@@ -782,9 +730,7 @@
             margin: 0 auto;
         }
 
-        .section-full {
-            padding: 120px 60px;
-        }
+        .section-full { padding: 120px 60px; }
 
         .section-label {
             display: inline-flex;
@@ -795,7 +741,7 @@
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--crimson-light);
+            color: var(--yellow-primary);
             margin-bottom: 20px;
         }
 
@@ -803,26 +749,29 @@
             content: '';
             width: 30px;
             height: 2px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-yellow);
         }
 
         .section-title {
             font-family: var(--font-heading);
             font-size: 2.8rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
             line-height: 1.25;
             margin-bottom: 25px;
         }
 
-        .section-title .crimson {
-            color: var(--crimson-light);
+        .section-title .accent {
+            background: var(--gradient-royal-yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-subtitle {
             font-family: var(--font-body);
             font-size: 1.05rem;
-            color: var(--text-light);
+            color: var(--white-dim);
             line-height: 1.9;
             max-width: 800px;
         }
@@ -830,7 +779,7 @@
         .section-divider {
             width: 60px;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             margin: 30px 0;
             border-radius: 2px;
         }
@@ -839,7 +788,7 @@
            REALITY SECTION
            ============================================ */
         .reality-section {
-            background: var(--secondary-dark);
+            background: var(--navy-primary);
             position: relative;
         }
 
@@ -850,7 +799,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at top left, rgba(192, 57, 43, 0.05) 0%, transparent 50%);
+            background: radial-gradient(ellipse at top left, rgba(37, 99, 235, 0.06) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -868,12 +817,12 @@
         .reality-text p {
             font-size: 1.05rem;
             line-height: 1.9;
-            color: var(--text-light);
+            color: var(--white-dim);
             margin-bottom: 20px;
         }
 
         .reality-text .highlight {
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             font-weight: 600;
         }
 
@@ -884,9 +833,9 @@
         }
 
         .reality-stat-card {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 30px;
             text-align: center;
             transition: var(--transition-smooth);
@@ -901,39 +850,37 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .reality-stat-card:hover {
-            border-color: var(--border-subtle);
+            border-color: var(--border-navy);
             transform: translateY(-5px);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .reality-stat-card:hover::before {
-            opacity: 1;
-        }
+        .reality-stat-card:hover::before { opacity: 1; }
 
         .reality-stat-number {
             font-family: var(--font-heading);
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--crimson-light);
+            color: var(--royal-soft);
             margin-bottom: 8px;
         }
 
         .reality-stat-label {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--white-faded);
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1.5;
         }
 
         /* ============================================
-           PILLARS SECTION
+           PILLARS
            ============================================ */
         .pillars-grid {
             display: grid;
@@ -943,9 +890,9 @@
         }
 
         .pillar-card {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 40px 30px;
             position: relative;
             overflow: hidden;
@@ -959,43 +906,25 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
         }
 
-        .pillar-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(192, 57, 43, 0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .pillar-card:hover {
-            border-color: var(--border-subtle);
+            border-color: var(--border-navy);
             transform: translateY(-8px);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .pillar-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .pillar-card:hover::after {
-            opacity: 1;
-        }
+        .pillar-card:hover::before { transform: scaleX(1); }
 
         .pillar-number {
             font-family: var(--font-heading);
             font-size: 3rem;
             font-weight: 800;
-            color: var(--crimson-primary);
+            color: var(--royal-primary);
             opacity: 0.15;
             margin-bottom: 15px;
         }
@@ -1003,56 +932,45 @@
         .pillar-icon {
             width: 50px;
             height: 50px;
-            background: var(--crimson-subtle);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-navy);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            color: var(--crimson-light);
+            color: var(--royal-light);
             font-size: 1.2rem;
             transition: var(--transition-smooth);
         }
 
         .pillar-card:hover .pillar-icon {
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             border-color: transparent;
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
         .pillar-title {
             font-family: var(--font-heading);
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
             margin-bottom: 15px;
         }
 
         .pillar-desc {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: var(--white-faded);
             line-height: 1.8;
         }
 
         /* ============================================
-           ABOUT SECTION
+           ABOUT
            ============================================ */
         .about-section {
-            background: var(--secondary-dark);
+            background: var(--navy-primary);
             position: relative;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            background: radial-gradient(ellipse at top right, rgba(192, 57, 43, 0.04) 0%, transparent 60%);
-            pointer-events: none;
         }
 
         .about-content {
@@ -1066,14 +984,9 @@
             z-index: 2;
         }
 
-        .about-image-container {
-            position: relative;
-            width: 100%;
-        }
-
         .about-image-wrapper {
             position: relative;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
         }
 
@@ -1084,16 +997,15 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(to top, rgba(8, 8, 8, 0.9), transparent);
+            background: linear-gradient(to top, var(--navy-deep), transparent);
         }
 
         .about-img {
             width: 100%;
             height: 550px;
             object-fit: cover;
-            border-radius: 12px;
-            filter: grayscale(20%) contrast(1.05);
-            border: 1px solid rgba(192, 57, 43, 0.15);
+            border-radius: 14px;
+            border: 2px solid rgba(37, 99, 235, 0.2);
         }
 
         .about-name-badge {
@@ -1107,12 +1019,12 @@
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
         }
 
         .about-name-badge p {
             font-size: 0.8rem;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             letter-spacing: 1px;
         }
 
@@ -1120,33 +1032,23 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             padding: 15px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
             z-index: 2;
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .about-experience-badge .number {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-
-        .about-experience-badge .label {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .about-experience-badge .number { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; }
+        .about-experience-badge .label { font-size: 0.65rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 
         .about-text h3 {
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
             margin-top: 40px;
             margin-bottom: 15px;
         }
@@ -1154,50 +1056,29 @@
         .about-text p {
             font-size: 1rem;
             line-height: 1.9;
-            color: var(--text-light);
+            color: var(--white-dim);
             margin-bottom: 18px;
         }
 
-        .about-text .crimson-text {
-            color: var(--crimson-light);
+        .about-text .accent-text {
+            color: var(--yellow-bright);
             font-weight: 600;
         }
 
         .about-philosophy-box {
-            background: var(--card-dark);
-            border: 1px solid var(--border-subtle);
-            border-left: 4px solid var(--crimson-primary);
+            background: var(--gradient-card);
+            border: 1px solid var(--border-navy);
+            border-left: 4px solid var(--royal-primary);
             padding: 30px;
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 14px 14px 0;
             margin: 30px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-philosophy-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-crimson-subtle);
-            pointer-events: none;
         }
 
         .about-philosophy-box h4 {
             font-family: var(--font-heading);
             font-size: 1.2rem;
-            color: var(--crimson-light);
+            color: var(--royal-soft);
             margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-philosophy-box p {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 12px;
         }
 
         .about-specialties {
@@ -1212,17 +1093,57 @@
             align-items: center;
             gap: 10px;
             font-size: 0.85rem;
-            color: var(--text-light);
-            padding: 5px 0;
+            color: var(--white-dim);
         }
 
-        .specialty-item i {
-            color: var(--crimson-light);
-            font-size: 0.7rem;
-        }
+        .specialty-item i { color: var(--yellow-primary); font-size: 0.7rem; }
 
         /* ============================================
-           SERVICES SECTION
+           PROFILE HIGHLIGHT
+           ============================================ */
+        .profile-highlight {
+            padding: 80px 60px;
+            background: var(--navy-medium);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .profile-highlight::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-royal-yellow);
+        }
+
+        .profile-highlight-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .profile-highlight-img {
+            width: 150px;
+            height: 150px;
+            min-width: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--royal-primary);
+            padding: 3px;
+            box-shadow: var(--shadow-royal);
+        }
+
+        .profile-highlight-text h3 { font-family: var(--font-heading); font-size: 1.5rem; color: var(--white-pure); margin-bottom: 5px; }
+        .profile-highlight-text .title { font-size: 0.85rem; color: var(--yellow-primary); letter-spacing: 1px; margin-bottom: 15px; }
+        .profile-highlight-text p { font-size: 0.95rem; color: var(--white-faded); line-height: 1.8; }
+
+        /* ============================================
+           SERVICES
            ============================================ */
         .services-grid {
             display: grid;
@@ -1232,7 +1153,7 @@
         }
 
         .service-card {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
             padding: 45px 35px;
@@ -1250,141 +1171,59 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             transform: scaleX(0);
             transition: transform 0.5s ease;
         }
 
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(192, 57, 43, 0.04) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .service-card:hover {
-            border-color: var(--border-subtle);
+            border-color: var(--border-navy);
             transform: translateY(-10px);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover::after {
-            opacity: 1;
-        }
+        .service-card:hover::before { transform: scaleX(1); }
 
         .service-icon {
             width: 60px;
             height: 60px;
-            background: var(--crimson-subtle);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-navy);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 25px;
             font-size: 1.4rem;
-            color: var(--crimson-light);
+            color: var(--royal-light);
             transition: var(--transition-smooth);
             position: relative;
             z-index: 2;
         }
 
         .service-card:hover .service-icon {
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             border-color: transparent;
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .service-title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 15px;
-            line-height: 1.3;
-            position: relative;
-            z-index: 2;
-        }
+        .service-title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--white-pure); margin-bottom: 15px; line-height: 1.3; position: relative; z-index: 2; }
+        .service-desc { font-size: 0.9rem; color: var(--white-faded); line-height: 1.8; margin-bottom: 25px; flex-grow: 1; position: relative; z-index: 2; }
 
-        .service-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 25px;
-            flex-grow: 1;
-            position: relative;
-            z-index: 2;
-        }
+        .service-features { list-style: none; margin-bottom: 25px; position: relative; z-index: 2; }
+        .service-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--white-dim); padding: 6px 0; }
+        .service-features li i { color: var(--yellow-primary); font-size: 0.7rem; margin-top: 5px; }
 
-        .service-features {
-            list-style: none;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            padding: 6px 0;
-        }
-
-        .service-features li i {
-            color: var(--crimson-light);
-            font-size: 0.7rem;
-            margin-top: 5px;
-        }
-
-        .service-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--crimson-light);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: auto;
-            transition: var(--transition-smooth);
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-cta:hover {
-            gap: 15px;
-            color: var(--text-white);
-        }
+        .service-cta { display: inline-flex; align-items: center; gap: 8px; color: var(--royal-soft); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-top: auto; transition: var(--transition-smooth); position: relative; z-index: 2; }
+        .service-cta:hover { gap: 15px; color: var(--yellow-bright); }
 
         /* ============================================
-           HOW IT WORKS / PROCESS SECTION
+           PROCESS
            ============================================ */
         .process-section {
-            background: var(--secondary-dark);
+            background: var(--navy-primary);
             position: relative;
-        }
-
-        .process-section::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: radial-gradient(ellipse at bottom center, rgba(192, 57, 43, 0.04) 0%, transparent 60%);
-            pointer-events: none;
         }
 
         .process-timeline {
@@ -1400,22 +1239,17 @@
             left: 50px;
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--crimson-primary), var(--crimson-dark), transparent);
+            background: linear-gradient(to bottom, var(--royal-primary), var(--yellow-primary), transparent);
         }
 
-        .process-step {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 60px;
-            position: relative;
-        }
+        .process-step { display: flex; gap: 40px; margin-bottom: 60px; position: relative; }
 
         .process-step-number {
             width: 100px;
             height: 100px;
             min-width: 100px;
-            background: var(--card-dark);
-            border: 2px solid var(--crimson-primary);
+            background: var(--gradient-card);
+            border: 2px solid var(--royal-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1423,61 +1257,38 @@
             font-family: var(--font-heading);
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--crimson-light);
+            color: var(--royal-soft);
             position: relative;
             z-index: 2;
             transition: var(--transition-smooth);
         }
 
         .process-step:hover .process-step-number {
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             transform: scale(1.1);
-            box-shadow: var(--shadow-crimson-strong);
+            box-shadow: var(--shadow-royal-strong);
         }
 
         .process-step-content {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 35px;
             flex: 1;
             transition: var(--transition-smooth);
         }
 
-        .process-step:hover .process-step-content {
-            border-color: var(--border-subtle);
-            box-shadow: var(--shadow-card);
-        }
-
-        .process-step-title {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 8px;
-        }
-
-        .process-step-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--crimson-light);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .process-step-desc {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
+        .process-step:hover .process-step-content { border-color: var(--border-navy); box-shadow: var(--shadow-card); }
+        .process-step-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--white-pure); margin-bottom: 8px; }
+        .process-step-label { font-size: 0.7rem; font-weight: 600; color: var(--yellow-primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .process-step-desc { font-size: 0.95rem; color: var(--white-dim); line-height: 1.8; }
 
         /* ============================================
-           EMAIL SYSTEM SECTION
+           EMAIL SYSTEM BOX
            ============================================ */
         .email-system-section {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
             border-radius: 20px;
             padding: 60px;
@@ -1496,79 +1307,39 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
         }
 
-        .email-benefits-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
+        .email-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
 
-        .email-benefit {
-            display: flex;
-            gap: 15px;
-            align-items: flex-start;
-        }
+        .email-benefit { display: flex; gap: 15px; align-items: flex-start; }
 
         .email-benefit-icon {
             width: 45px;
             height: 45px;
             min-width: 45px;
-            background: var(--crimson-subtle);
-            border: 1px solid var(--border-subtle);
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-navy);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--crimson-light);
+            color: var(--royal-light);
             font-size: 1rem;
         }
 
-        .email-benefit h4 {
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            color: var(--text-white);
-            margin-bottom: 5px;
-        }
-
-        .email-benefit p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
+        .email-benefit h4 { font-family: var(--font-heading); font-size: 1rem; color: var(--white-pure); margin-bottom: 5px; }
+        .email-benefit p { font-size: 0.85rem; color: var(--white-faded); line-height: 1.7; }
 
         /* ============================================
-           FEATURED AUTHORS SECTION
+           AUTHORS
            ============================================ */
-        .authors-section {
-            background: var(--secondary-dark);
-            position: relative;
-        }
+        .authors-section { background: var(--navy-primary); position: relative; }
 
-        .authors-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(192, 57, 43, 0.03) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .authors-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
-            margin-top: 60px;
-            position: relative;
-            z-index: 2;
-        }
+        .authors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; margin-top: 60px; position: relative; z-index: 2; }
 
         .author-card {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
             overflow: hidden;
@@ -1583,26 +1354,15 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .author-card:hover {
-            border-color: var(--border-subtle);
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-crimson);
-        }
+        .author-card:hover { border-color: var(--border-navy); transform: translateY(-10px); box-shadow: var(--shadow-royal); }
+        .author-card:hover::before { opacity: 1; }
 
-        .author-card:hover::before {
-            opacity: 1;
-        }
-
-        .author-card-header {
-            position: relative;
-            padding: 35px 30px 20px;
-            text-align: center;
-        }
+        .author-card-header { padding: 35px 30px 20px; text-align: center; }
 
         .author-photo-wrapper {
             width: 120px;
@@ -1610,69 +1370,32 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 20px;
-            border: 3px solid var(--crimson-primary);
+            border: 3px solid var(--royal-primary);
             padding: 3px;
             transition: var(--transition-smooth);
         }
 
-        .author-card:hover .author-photo-wrapper {
-            box-shadow: 0 0 30px var(--crimson-glow);
-            border-color: var(--crimson-light);
-        }
+        .author-card:hover .author-photo-wrapper { box-shadow: 0 0 30px rgba(37, 99, 235, 0.3); border-color: var(--royal-light); }
 
-        .author-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+        .author-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .author-name { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--white-pure); margin-bottom: 5px; }
+        .author-email { font-size: 0.8rem; color: var(--royal-soft); margin-bottom: 5px; word-break: break-all; }
+        .author-email i { margin-right: 5px; }
+        .author-email a { color: var(--royal-soft); }
+        .author-email a:hover { color: var(--yellow-bright); }
 
-        .author-name {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 5px;
-        }
+        .author-card-body { padding: 0 30px 30px; }
+        .author-book-container { margin-bottom: 20px; text-align: center; }
 
-        .author-email {
-            font-size: 0.8rem;
-            color: var(--crimson-light);
-            margin-bottom: 5px;
-            word-break: break-all;
-        }
-
-        .author-email i {
-            margin-right: 5px;
-        }
-
-        .author-card-body {
-            padding: 0 30px 30px;
-        }
-
-        .author-book-container {
-            position: relative;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .author-book-link {
-            display: inline-block;
-            position: relative;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .author-book-link:hover {
-            transform: scale(1.05);
-        }
+        .author-book-link { display: inline-block; transition: var(--transition-smooth); cursor: pointer; }
+        .author-book-link:hover { transform: scale(1.05); }
 
         .author-book-img {
             width: 180px;
             height: 260px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid var(--border-light);
         }
 
@@ -1684,47 +1407,32 @@
             padding: 10px 20px;
             background: #FF9900;
             color: #111111;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             transition: var(--transition-smooth);
         }
 
-        .amazon-badge:hover {
-            background: #FFB84D;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 153, 0, 0.3);
-        }
+        .amazon-badge:hover { background: #FFB84D; transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255, 153, 0, 0.3); }
 
         .author-testimonial {
-            background: var(--tertiary-dark);
-            border-left: 3px solid var(--crimson-primary);
+            background: var(--navy-deep);
+            border-left: 3px solid var(--royal-primary);
             padding: 15px 20px;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 10px 10px 0;
             margin-top: 20px;
         }
 
-        .author-testimonial p {
-            font-family: var(--font-elegant);
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
+        .author-testimonial p { font-family: var(--font-elegant); font-size: 1rem; font-style: italic; color: var(--white-dim); line-height: 1.7; }
 
         /* ============================================
-           WHY CHOOSE SECTION
+           WHY CHOOSE
            ============================================ */
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 60px;
-        }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
 
         .why-card {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
             padding: 40px;
@@ -1740,46 +1448,23 @@
             left: 0;
             width: 4px;
             height: 0;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
             transition: height 0.5s ease;
         }
 
-        .why-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-crimson-subtle);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .why-card:hover {
-            border-color: var(--border-subtle);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-crimson);
-        }
-
-        .why-card:hover::before {
-            height: 100%;
-        }
-
-        .why-card:hover::after {
-            opacity: 1;
-        }
+        .why-card:hover { border-color: var(--border-navy); transform: translateY(-5px); box-shadow: var(--shadow-royal); }
+        .why-card:hover::before { height: 100%; }
 
         .why-card-icon {
             width: 50px;
             height: 50px;
-            background: var(--crimson-subtle);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid var(--border-navy);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--crimson-light);
+            color: var(--royal-light);
             font-size: 1.2rem;
             margin-bottom: 20px;
             position: relative;
@@ -1787,29 +1472,10 @@
             transition: var(--transition-smooth);
         }
 
-        .why-card:hover .why-card-icon {
-            background: var(--gradient-crimson);
-            color: var(--text-white);
-            border-color: transparent;
-        }
+        .why-card:hover .why-card-icon { background: var(--gradient-royal); color: var(--white-pure); border-color: transparent; }
 
-        .why-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .why-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            position: relative;
-            z-index: 2;
-        }
+        .why-card h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--white-pure); margin-bottom: 15px; position: relative; z-index: 2; }
+        .why-card p { font-size: 0.9rem; color: var(--white-faded); line-height: 1.8; position: relative; z-index: 2; }
 
         /* ============================================
            CTA BANNER
@@ -1819,6 +1485,7 @@
             padding: 100px 60px;
             text-align: center;
             overflow: hidden;
+            background: var(--navy-medium);
         }
 
         .cta-banner-bg {
@@ -1827,129 +1494,32 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(192, 57, 43, 0.08) 0%, transparent 40%, rgba(192, 57, 43, 0.05) 100%);
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
             pointer-events: none;
         }
 
-        .cta-banner-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-banner h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .cta-banner h2 .crimson {
-            color: var(--crimson-light);
-        }
-
-        .cta-banner p {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
+        .cta-banner-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .cta-banner h2 { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--white-pure); margin-bottom: 20px; line-height: 1.3; }
+        .cta-banner h2 .accent { background: var(--gradient-royal-yellow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cta-banner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 35px; }
 
         .cta-banner .limited-notice {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 12px 25px;
-            background: var(--crimson-subtle);
-            border: 1px solid var(--border-subtle);
+            background: var(--yellow-subtle);
+            border: 1px solid var(--border-yellow);
             border-radius: 30px;
             font-size: 0.8rem;
-            color: var(--crimson-light);
+            color: var(--yellow-bright);
             margin-top: 25px;
         }
 
         /* ============================================
-           PROFILE HIGHLIGHT (Second Tolu appearance)
+           CONTACT
            ============================================ */
-        .profile-highlight {
-            padding: 80px 60px;
-            background: var(--card-dark);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-highlight::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-crimson);
-        }
-
-        .profile-highlight-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .profile-highlight-img {
-            width: 150px;
-            height: 150px;
-            min-width: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--crimson-primary);
-            padding: 3px;
-            box-shadow: var(--shadow-crimson);
-        }
-
-        .profile-highlight-text h3 {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--text-white);
-            margin-bottom: 5px;
-        }
-
-        .profile-highlight-text .title {
-            font-size: 0.85rem;
-            color: var(--crimson-light);
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .profile-highlight-text p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* ============================================
-           CONTACT SECTION
-           ============================================ */
-        .contact-section {
-            background: var(--secondary-dark);
-            position: relative;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at bottom right, rgba(192, 57, 43, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
+        .contact-section { background: var(--navy-primary); position: relative; }
 
         .contact-content {
             max-width: 1400px;
@@ -1962,82 +1532,34 @@
             z-index: 2;
         }
 
-        .contact-info {
-            padding-right: 40px;
-        }
-
-        .contact-info p {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.9;
-            margin-bottom: 20px;
-        }
+        .contact-info { padding-right: 40px; }
+        .contact-info p { font-size: 1rem; color: var(--white-dim); line-height: 1.9; margin-bottom: 20px; }
 
         .contact-email-display {
             display: flex;
             align-items: center;
             gap: 15px;
-            background: var(--card-dark);
-            border: 1px solid var(--border-subtle);
+            background: var(--gradient-card);
+            border: 1px solid var(--border-navy);
             padding: 20px 25px;
             border-radius: 12px;
             margin: 30px 0;
             transition: var(--transition-smooth);
         }
 
-        .contact-email-display:hover {
-            border-color: var(--crimson-primary);
-            box-shadow: var(--shadow-crimson);
-        }
+        .contact-email-display:hover { border-color: var(--royal-primary); box-shadow: var(--shadow-royal); }
+        .contact-email-display i { font-size: 1.5rem; color: var(--royal-light); }
+        .contact-email-display .email-text { font-family: var(--font-heading); font-size: 1.1rem; color: var(--royal-soft); font-weight: 600; }
 
-        .contact-email-display i {
-            font-size: 1.5rem;
-            color: var(--crimson-light);
-        }
-
-        .contact-email-display .email-text {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            color: var(--crimson-light);
-            font-weight: 600;
-        }
-
-        .contact-details-list {
-            margin: 30px 0;
-        }
-
-        .contact-detail-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .contact-detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .contact-detail-item i {
-            color: var(--crimson-light);
-            font-size: 1rem;
-            margin-top: 4px;
-        }
-
-        .contact-detail-item h4 {
-            font-size: 0.9rem;
-            color: var(--text-white);
-            margin-bottom: 3px;
-        }
-
-        .contact-detail-item p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0;
-        }
+        .contact-details-list { margin: 30px 0; }
+        .contact-detail-item { display: flex; align-items: flex-start; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--border-light); }
+        .contact-detail-item:last-child { border-bottom: none; }
+        .contact-detail-item i { color: var(--yellow-primary); font-size: 1rem; margin-top: 4px; }
+        .contact-detail-item h4 { font-size: 0.9rem; color: var(--white-pure); margin-bottom: 3px; }
+        .contact-detail-item p { font-size: 0.85rem; color: var(--white-faded); margin-bottom: 0; }
 
         .contact-form-container {
-            background: var(--card-dark);
+            background: var(--gradient-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
             padding: 45px;
@@ -2052,46 +1574,24 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
         }
 
-        .contact-form-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 8px;
-        }
+        .contact-form-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--white-pure); margin-bottom: 8px; }
+        .contact-form-subtitle { font-size: 0.85rem; color: var(--white-faded); margin-bottom: 30px; }
 
-        .contact-form-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-light);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--white-dim); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
             padding: 14px 18px;
-            background: var(--tertiary-dark);
+            background: var(--navy-deep);
             border: 1px solid var(--border-light);
-            border-radius: 8px;
-            color: var(--text-white);
+            border-radius: 10px;
+            color: var(--white-pure);
             font-family: var(--font-body);
             font-size: 0.9rem;
             transition: var(--transition-smooth);
@@ -2101,81 +1601,56 @@
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            border-color: var(--crimson-primary);
-            box-shadow: 0 0 0 3px var(--crimson-subtle);
+            border-color: var(--royal-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--text-dim);
-        }
+        .form-group textarea::placeholder { color: var(--white-faded); }
 
-        .form-group textarea {
-            min-height: 130px;
-            resize: vertical;
-        }
+        .form-group textarea { min-height: 130px; resize: vertical; }
 
         .form-group select {
             appearance: none;
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c0392b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%233b82f6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 15px center;
         }
 
-        .form-group select option {
-            background: var(--tertiary-dark);
-            color: var(--text-white);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+        .form-group select option { background: var(--navy-deep); color: var(--white-pure); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
         .form-submit {
             width: 100%;
             padding: 16px;
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             font-family: var(--font-body);
             font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: var(--transition-smooth);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
         }
 
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-crimson-strong);
-        }
-
-        .form-notice {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        .form-notice i {
-            color: var(--crimson-light);
-        }
+        .form-submit:hover { transform: translateY(-3px); box-shadow: var(--shadow-royal-strong); }
+        .form-notice { text-align: center; margin-top: 15px; font-size: 0.75rem; color: var(--white-faded); }
+        .form-notice i { color: var(--yellow-primary); }
 
         /* ============================================
            FOOTER
            ============================================ */
         .footer {
-            background: var(--primary-dark);
+            background: var(--navy-deep);
             border-top: 1px solid var(--border-light);
             padding: 80px 60px 30px;
             position: relative;
@@ -2187,60 +1662,24 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--crimson-primary), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--royal-primary), var(--yellow-primary), transparent);
             opacity: 0.5;
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-brand h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--white-pure); margin-bottom: 5px; }
+        .footer-brand .tagline { font-size: 0.8rem; color: var(--yellow-primary); margin-bottom: 20px; }
+        .footer-brand p { font-size: 0.85rem; color: var(--white-faded); line-height: 1.8; margin-bottom: 20px; }
 
-        .footer-brand h3 {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 5px;
-        }
-
-        .footer-brand .tagline {
-            font-size: 0.8rem;
-            color: var(--crimson-light);
-            margin-bottom: 20px;
-        }
-
-        .footer-brand p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .footer-email {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--crimson-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-email:hover {
-            color: var(--text-white);
-        }
+        .footer-email { display: flex; align-items: center; gap: 10px; color: var(--royal-soft); font-size: 0.9rem; font-weight: 600; transition: var(--transition-smooth); }
+        .footer-email:hover { color: var(--yellow-bright); }
 
         .footer-column h4 {
             font-family: var(--font-heading);
             font-size: 1rem;
             font-weight: 700;
-            color: var(--text-white);
+            color: var(--white-pure);
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 12px;
@@ -2253,61 +1692,27 @@
             left: 0;
             width: 30px;
             height: 2px;
-            background: var(--gradient-crimson);
+            background: var(--gradient-royal-yellow);
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a::before {
-            content: '';
-            width: 0;
-            height: 1px;
-            background: var(--crimson-primary);
-            transition: width 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--crimson-light);
-            transform: translateX(5px);
-        }
-
-        .footer-links a:hover::before {
-            width: 15px;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { font-size: 0.85rem; color: var(--white-faded); display: flex; align-items: center; gap: 8px; transition: var(--transition-smooth); }
+        .footer-links a::before { content: ''; width: 0; height: 1px; background: var(--royal-primary); transition: width 0.3s ease; }
+        .footer-links a:hover { color: var(--royal-soft); transform: translateX(5px); }
+        .footer-links a:hover::before { width: 15px; }
 
         .footer-professional {
-            background: var(--card-dark);
+            background: var(--navy-primary);
             border: 1px solid var(--border-light);
-            border-left: 3px solid var(--crimson-primary);
+            border-left: 3px solid var(--royal-primary);
             border-radius: 0 8px 8px 0;
             padding: 15px 20px;
             margin-top: 20px;
         }
 
-        .footer-professional p {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        .footer-professional i {
-            color: var(--crimson-light);
-        }
+        .footer-professional p { font-size: 0.75rem; color: var(--white-faded); line-height: 1.6; }
+        .footer-professional i { color: var(--yellow-primary); }
 
         .footer-bottom {
             max-width: 1400px;
@@ -2321,27 +1726,13 @@
             gap: 15px;
         }
 
-        .footer-bottom p {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-        }
-
-        .footer-bottom-links a:hover {
-            color: var(--crimson-light);
-        }
+        .footer-bottom p { font-size: 0.75rem; color: var(--white-faded); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { font-size: 0.75rem; color: var(--white-faded); }
+        .footer-bottom-links a:hover { color: var(--royal-soft); }
 
         /* ============================================
-           BACK TO TOP BUTTON
+           BACK TO TOP
            ============================================ */
         .back-to-top {
             position: fixed;
@@ -2349,8 +1740,8 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--gradient-crimson);
-            color: var(--text-white);
+            background: var(--gradient-royal);
+            color: var(--white-pure);
             border: none;
             border-radius: 50%;
             display: flex;
@@ -2362,18 +1753,11 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition-smooth);
-            box-shadow: var(--shadow-crimson);
+            box-shadow: var(--shadow-royal);
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-crimson-strong);
-        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); box-shadow: var(--shadow-royal-strong); }
 
         /* ============================================
            CURSOR FOLLOWER
@@ -2381,18 +1765,18 @@
         .cursor-follower {
             width: 30px;
             height: 30px;
-            border: 1px solid var(--crimson-primary);
+            border: 1px solid var(--royal-light);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.5;
+            opacity: 0.4;
             transition: transform 0.15s ease, opacity 0.3s ease, border-color 0.3s ease;
             display: none;
         }
 
         /* ============================================
-           FLOATING PARTICLES
+           PARTICLES
            ============================================ */
         .particles-container {
             position: fixed;
@@ -2411,36 +1795,20 @@
             animation: floatParticle linear infinite;
         }
 
-        .particle-crimson {
-            background: var(--crimson-primary);
-            opacity: 0.15;
-        }
-
-        .particle-light {
-            background: var(--crimson-light);
-            opacity: 0.1;
-        }
-
-        .particle-white {
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0.05;
-        }
+        .particle-blue { background: var(--royal-primary); opacity: 0.12; }
+        .particle-light { background: var(--royal-soft); opacity: 0.08; }
+        .particle-yellow { background: var(--yellow-primary); opacity: 0.1; }
+        .particle-white { background: var(--white-pure); opacity: 0.04; }
 
         @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: var(--particle-opacity, 0.15); }
-            90% { opacity: var(--particle-opacity, 0.15); }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.12; }
+            90% { opacity: 0.12; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
         }
 
         /* ============================================
-           RESPONSIVE STYLES
+           RESPONSIVE
            ============================================ */
         @media (max-width: 1200px) {
             .hero-title { font-size: 3rem; }
@@ -2451,26 +1819,10 @@
 
         @media (max-width: 992px) {
             .navbar { padding: 15px 30px; }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: rgba(8, 8, 8, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-                transition: right 0.5s ease;
-            }
-
+            .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(10, 22, 40, 0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: right 0.5s ease; }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 1rem; }
             .mobile-menu-btn { display: flex; }
-
             .hero { padding: 120px 30px 60px; }
             .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .hero-title { font-size: 2.5rem; }
@@ -2478,23 +1830,13 @@
             .hero-image-section { order: -1; }
             .hero-profile-container { width: 280px; height: 340px; }
             .hero-subtitle-secondary { border-left: none; padding-left: 0; text-align: center; }
-
             .reality-content { grid-template-columns: 1fr; gap: 50px; }
             .about-content { grid-template-columns: 1fr; gap: 40px; }
             .about-img { height: 400px; }
             .contact-content { grid-template-columns: 1fr; gap: 50px; }
-
             .section, .section-full { padding: 80px 30px; }
-
             .process-timeline::before { left: 30px; }
-
-            .authors-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
+            .authors-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
             .profile-highlight-inner { flex-direction: column; text-align: center; }
         }
 
@@ -2506,18 +1848,10 @@
             .why-grid { grid-template-columns: 1fr; }
             .email-benefits-grid { grid-template-columns: 1fr; }
             .email-system-section { padding: 30px; }
-
-            .trust-bar-inner {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-
+            .trust-bar-inner { flex-direction: column; gap: 15px; text-align: center; }
             .about-specialties { grid-template-columns: 1fr; }
-
             .process-step { flex-direction: column; gap: 20px; }
             .process-step-number { width: 70px; height: 70px; min-width: 70px; font-size: 1.3rem; }
-
             .form-row { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; text-align: center; }
@@ -2526,6 +1860,7 @@
             .hero-badge { font-size: 0.6rem; }
             .reality-stats-grid { grid-template-columns: 1fr 1fr; }
             .contact-info { padding-right: 0; }
+            .preloader-logo { font-size: 1.8rem; }
         }
 
         @media (max-width: 480px) {
@@ -2535,43 +1870,34 @@
             .contact-email-display { flex-direction: column; text-align: center; }
             .hero-stats { display: none; }
             .hero-profile-frame { display: none; }
-            .preloader-logo { font-size: 1.5rem; }
+            .preloader-logo { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ============================================
-         PRELOADER
-         ============================================ -->
+    <!-- PRELOADER -->
     <div class="preloader" id="preloader">
-        <div class="preloader-logo">TOLU MARKETING HUB</div>
+        <div class="preloader-logo">TOLU <span>MARKETING HUB</span></div>
+        <div class="preloader-tagline">Specialized Book Marketing</div>
         <div class="preloader-bar-container">
             <div class="preloader-bar"></div>
         </div>
-        <div class="preloader-text">Specialized Book Marketing</div>
-        <div class="preloader-subtitle">Bold Strategy. Powerful Results.</div>
+        <div class="preloader-text">Bold Strategy. Powerful Results.</div>
     </div>
 
-    <!-- ============================================
-         FLOATING PARTICLES
-         ============================================ -->
+    <!-- PARTICLES -->
     <div class="particles-container" id="particles"></div>
 
-    <!-- ============================================
-         CURSOR FOLLOWER
-         ============================================ -->
+    <!-- CURSOR -->
     <div class="cursor-follower" id="cursorFollower"></div>
 
-    <!-- ============================================
-         NAVIGATION
-         ============================================ -->
+    <!-- NAVIGATION -->
     <nav class="navbar" id="navbar">
         <a href="#home" class="nav-logo">
             <div class="nav-logo-icon">T</div>
             <div class="nav-logo-text">TOLU <span>MARKETING HUB</span></div>
         </a>
-
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" onclick="closeMenu()">Home</a></li>
             <li><a href="#about" onclick="closeMenu()">About</a></li>
@@ -2580,71 +1906,37 @@
             <li><a href="#authors" onclick="closeMenu()">Featured Authors</a></li>
             <li><a href="#contact" onclick="closeMenu()" class="nav-cta">Contact</a></li>
         </ul>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
     </nav>
 
-    <!-- ============================================
-         HERO SECTION
-         ============================================ -->
+    <!-- HERO -->
     <section class="hero" id="home">
-        <div class="hero-bg-elements">
-            <div class="hero-bg-circle"></div>
-            <div class="hero-bg-circle"></div>
-            <div class="hero-bg-circle"></div>
-        </div>
+        <div class="hero-bg-elements"><div class="hero-bg-circle"></div><div class="hero-bg-circle"></div><div class="hero-bg-circle"></div></div>
         <div class="hero-gradient-orb"></div>
         <div class="hero-gradient-orb-2"></div>
-
         <div class="hero-content">
             <div class="hero-text">
-                <div class="hero-badge">
-                    <i class="fas fa-fire"></i>
-                    Book Specialist Marketer
-                    <i class="fas fa-fire"></i>
-                </div>
-                <h1 class="hero-title">
-                    Your Book Was Written to Be Read. <span class="crimson">We Make Sure the World Reads It.</span>
-                </h1>
-                <p class="hero-subtitle">
-                    I am Tolu Dankworth, a Book Specialist Marketer with deep expertise in the publishing industry. I work exclusively with authors who are serious about transforming their books from overlooked manuscripts into recognized, sought-after titles that sell consistently, build loyal readerships, and establish the kind of author authority that lasts for years.
-                </p>
-                <p class="hero-subtitle-secondary">
-                    Specialized, structured, deeply researched book marketing strategy built from the ground up for authors who refuse to let their work go unnoticed.
-                </p>
+                <div class="hero-badge"><i class="fas fa-crown"></i> Book Specialist Marketer <i class="fas fa-crown"></i></div>
+                <h1 class="hero-title">Your Book Was Written to Be Read. <span class="accent">We Make Sure the World Reads It.</span></h1>
+                <p class="hero-subtitle">I am Tolu Dankworth, a Book Specialist Marketer with deep expertise in the publishing industry. I work exclusively with authors who are serious about transforming their books from overlooked manuscripts into recognized, sought-after titles that sell consistently, build loyal readerships, and establish the kind of author authority that lasts for years.</p>
+                <p class="hero-subtitle-secondary">Specialized, structured, deeply researched book marketing strategy built from the ground up for authors who refuse to let their work go unnoticed.</p>
                 <div class="hero-cta-group">
-                    <a href="#contact" class="btn-primary">
-                        <i class="fas fa-envelope"></i> Start Your Project
-                    </a>
-                    <a href="#services" class="btn-secondary">
-                        <i class="fas fa-arrow-right"></i> View Services
-                    </a>
+                    <a href="#contact" class="btn-primary"><i class="fas fa-envelope"></i> Start Your Project</a>
+                    <a href="#services" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Services</a>
                 </div>
             </div>
-
             <div class="hero-image-section">
                 <div class="hero-profile-container">
                     <div class="hero-profile-frame"></div>
-                    <img src="Tolu Profile.jpeg" alt="Tolu Dankworth - Book Specialist Marketer" class="hero-profile-img">
-                    <div class="hero-profile-badge">
-                        <i class="fas fa-book-open"></i> Book Marketing Specialist
-                    </div>
-                    <div class="hero-stats">
-                        <div class="hero-stats-number">100%</div>
-                        <div class="hero-stats-label">Dedicated to<br>Authors</div>
-                    </div>
+                    <img src="Tolu Profile.jpeg" alt="Tolu Dankworth" class="hero-profile-img">
+                    <div class="hero-profile-badge"><i class="fas fa-book-open"></i> Book Marketing Specialist</div>
+                    <div class="hero-stats"><div class="hero-stats-number">100%</div><div class="hero-stats-label">Dedicated to<br>Authors</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         TRUST BAR
-         ============================================ -->
+    <!-- TRUST BAR -->
     <div class="trust-bar">
         <div class="trust-bar-inner">
             <div class="trust-item reveal stagger-1"><i class="fas fa-check-circle"></i> Exclusively Book Marketing Focused</div>
@@ -2655,116 +1947,62 @@
         </div>
     </div>
 
-    <!-- ============================================
-         REALITY SECTION
-         ============================================ -->
+    <!-- REALITY -->
     <section class="section-full reality-section">
         <div class="reality-content section">
             <div class="reality-text">
                 <div class="section-label reveal">The Hard Truth</div>
-                <h2 class="section-title reveal">
-                    Most Authors Never Get the <span class="crimson">Visibility They Deserve</span>
-                </h2>
+                <h2 class="section-title reveal">Most Authors Never Get the <span class="accent">Visibility They Deserve</span></h2>
                 <div class="section-divider reveal"></div>
                 <p class="reveal">Over four million books are published every single year across traditional and self-publishing platforms combined. That number grows every year. The competition for reader attention has never been more fierce. The algorithms on Amazon, Goodreads, and social media platforms are more complex than ever.</p>
-                <p class="reveal">The average self-published book sells fewer than one hundred copies in its lifetime. Not because the author did not work hard on it. Not because the story or content lacks value. But because <span class="highlight">writing a great book and marketing a great book are two completely different skill sets</span> that require two completely different levels of expertise.</p>
+                <p class="reveal">The average self-published book sells fewer than one hundred copies in its lifetime. Not because the author did not work hard on it. But because <span class="highlight">writing a great book and marketing a great book are two completely different skill sets</span> that require two completely different levels of expertise.</p>
                 <p class="reveal">Most authors are brilliant at writing. Very few are equipped to handle the strategic, technical, psychological, and platform-specific demands of modern book marketing. That gap between a great book and a visible book is exactly where <span class="highlight">Tolu Marketing Hub</span> operates.</p>
                 <p class="reveal">If you have written a book worth reading, then it deserves a marketing strategy worth investing in.</p>
             </div>
-
             <div class="reality-stats-grid">
-                <div class="reality-stat-card reveal stagger-1">
-                    <div class="reality-stat-number">4M+</div>
-                    <div class="reality-stat-label">Books Published<br>Every Year</div>
-                </div>
-                <div class="reality-stat-card reveal stagger-2">
-                    <div class="reality-stat-number">&lt;100</div>
-                    <div class="reality-stat-label">Average Self-Published<br>Book Sales</div>
-                </div>
-                <div class="reality-stat-card reveal stagger-3">
-                    <div class="reality-stat-number">90%</div>
-                    <div class="reality-stat-label">Authors Struggle<br>With Marketing</div>
-                </div>
-                <div class="reality-stat-card reveal stagger-4">
-                    <div class="reality-stat-number">100%</div>
-                    <div class="reality-stat-label">Our Focus on<br>Book Marketing</div>
-                </div>
+                <div class="reality-stat-card reveal stagger-1"><div class="reality-stat-number">4M+</div><div class="reality-stat-label">Books Published<br>Every Year</div></div>
+                <div class="reality-stat-card reveal stagger-2"><div class="reality-stat-number">&lt;100</div><div class="reality-stat-label">Average Self-Published<br>Book Sales</div></div>
+                <div class="reality-stat-card reveal stagger-3"><div class="reality-stat-number">90%</div><div class="reality-stat-label">Authors Struggle<br>With Marketing</div></div>
+                <div class="reality-stat-card reveal stagger-4"><div class="reality-stat-number">100%</div><div class="reality-stat-label">Our Focus on<br>Book Marketing</div></div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         FOUR PILLARS SECTION
-         ============================================ -->
+    <!-- PILLARS -->
     <section class="section" id="pillars">
         <div class="section-label reveal">The Foundation</div>
-        <h2 class="section-title reveal">The Four Foundations of Every <span class="crimson">Successful Book Marketing Strategy</span></h2>
-        <p class="section-subtitle reveal">Every strategy built at Tolu Marketing Hub is grounded in these four essential pillars. Without any one of them, a book marketing strategy is incomplete and unlikely to produce meaningful, lasting results.</p>
-
+        <h2 class="section-title reveal">The Four Foundations of Every <span class="accent">Successful Book Marketing Strategy</span></h2>
+        <p class="section-subtitle reveal">Every strategy built at Tolu Marketing Hub is grounded in these four essential pillars.</p>
         <div class="pillars-grid">
-            <div class="pillar-card reveal stagger-1">
-                <div class="pillar-number">01</div>
-                <div class="pillar-icon"><i class="fas fa-eye"></i></div>
-                <h3 class="pillar-title">Visibility</h3>
-                <p class="pillar-desc">A book that cannot be found cannot be sold. Your Amazon page needs to be fully optimized with the right keywords, categories, and descriptions. Your author name needs to begin appearing in the spaces where your ideal readers spend their time. Visibility is the foundation of everything.</p>
-            </div>
-            <div class="pillar-card reveal stagger-2">
-                <div class="pillar-number">02</div>
-                <div class="pillar-icon"><i class="fas fa-crosshairs"></i></div>
-                <h3 class="pillar-title">Positioning</h3>
-                <p class="pillar-desc">Visibility without positioning is wasted attention. When a potential reader finds your book, the way your book is positioned determines whether they feel compelled to purchase it or simply scroll past it. Getting positioning right is the difference between a browser and a buyer.</p>
-            </div>
-            <div class="pillar-card reveal stagger-3">
-                <div class="pillar-number">03</div>
-                <div class="pillar-icon"><i class="fas fa-crown"></i></div>
-                <h3 class="pillar-title">Authority</h3>
-                <p class="pillar-desc">In a crowded market, authority is what makes readers choose your book with confidence. When your authority is established, readers do not just buy one book. They follow your entire catalogue. They recommend you. Authority turns a book sale into a career.</p>
-            </div>
-            <div class="pillar-card reveal stagger-4">
-                <div class="pillar-number">04</div>
-                <div class="pillar-icon"><i class="fas fa-infinity"></i></div>
-                <h3 class="pillar-title">Sustainability</h3>
-                <p class="pillar-desc">The books that sell consistently for years are backed by sustainable marketing systems that keep generating visibility and attracting new readers long after the initial launch. Your book should still be making sales two years from now, not just two weeks after launch.</p>
-            </div>
+            <div class="pillar-card reveal stagger-1"><div class="pillar-number">01</div><div class="pillar-icon"><i class="fas fa-eye"></i></div><h3 class="pillar-title">Visibility</h3><p class="pillar-desc">A book that cannot be found cannot be sold. Your Amazon page needs to be fully optimized with the right keywords, categories, and descriptions. Your author name needs to begin appearing in the spaces where your ideal readers spend their time.</p></div>
+            <div class="pillar-card reveal stagger-2"><div class="pillar-number">02</div><div class="pillar-icon"><i class="fas fa-crosshairs"></i></div><h3 class="pillar-title">Positioning</h3><p class="pillar-desc">Visibility without positioning is wasted attention. When a potential reader finds your book, the way your book is positioned determines whether they feel compelled to purchase it or simply scroll past it.</p></div>
+            <div class="pillar-card reveal stagger-3"><div class="pillar-number">03</div><div class="pillar-icon"><i class="fas fa-crown"></i></div><h3 class="pillar-title">Authority</h3><p class="pillar-desc">In a crowded market, authority is what makes readers choose your book with confidence. When your authority is established, readers do not just buy one book. They follow your entire catalogue. Authority turns a book sale into a career.</p></div>
+            <div class="pillar-card reveal stagger-4"><div class="pillar-number">04</div><div class="pillar-icon"><i class="fas fa-infinity"></i></div><h3 class="pillar-title">Sustainability</h3><p class="pillar-desc">The books that sell consistently for years are backed by sustainable marketing systems that keep generating visibility and attracting new readers long after the initial launch. Your book should still be making sales two years from now.</p></div>
         </div>
     </section>
 
-    <!-- ============================================
-         ABOUT SECTION
-         ============================================ -->
+    <!-- ABOUT -->
     <section class="section-full about-section" id="about">
         <div class="about-content section">
             <div class="about-image-container reveal-left">
                 <div class="about-image-wrapper">
-                    <img src="Tolu Profile.jpeg" alt="Tolu Dankworth - Book Specialist Marketer" class="about-img">
-                    <div class="about-name-badge">
-                        <h3>Tolu Dankworth</h3>
-                        <p>Book Specialist Marketer</p>
-                    </div>
+                    <img src="Tolu Profile.jpeg" alt="Tolu Dankworth" class="about-img">
+                    <div class="about-name-badge"><h3>Tolu Dankworth</h3><p>Book Specialist Marketer</p></div>
                 </div>
-                <div class="about-experience-badge">
-                    <div class="number">TMH</div>
-                    <div class="label">Specialist<br>Practice</div>
-                </div>
+                <div class="about-experience-badge"><div class="number">TMH</div><div class="label">Specialist<br>Practice</div></div>
             </div>
-
             <div class="about-text reveal-right">
                 <div class="section-label">About Me</div>
-                <h2 class="section-title">The <span class="crimson">Specialist</span> Behind the Strategy</h2>
+                <h2 class="section-title">The <span class="accent">Specialist</span> Behind the Strategy</h2>
                 <div class="section-divider"></div>
-
-                <p>I am a Book Specialist Marketer. Not a general marketer who occasionally works with authors. Not a social media manager who adds book promotions to a list of unrelated services. A specialist whose entire professional practice is built around one thing and one thing only: helping authors build the visibility, authority, and sales momentum their books deserve.</p>
-
-                <p>I built Tolu Marketing Hub after recognizing something that frustrated me deeply about the marketing industry. Authors were being underserved. They were hiring general marketing agencies that did not understand the publishing world. They were following generic marketing advice that was not designed for books.</p>
-
-                <p>They were not failing because their books were bad. They were failing because <span class="crimson-text">nobody in their corner truly understood what book marketing requires at a specialist level</span>.</p>
-
+                <p>I am a Book Specialist Marketer. Not a general marketer who occasionally works with authors. A specialist whose entire professional practice is built around one thing and one thing only: helping authors build the visibility, authority, and sales momentum their books deserve.</p>
+                <p>I built Tolu Marketing Hub after recognizing something that frustrated me deeply about the marketing industry. Authors were being underserved. They were hiring general marketing agencies that did not understand the publishing world.</p>
+                <p>They were not failing because their books were bad. They were failing because <span class="accent-text">nobody in their corner truly understood what book marketing requires at a specialist level</span>.</p>
                 <div class="about-philosophy-box">
                     <h4><i class="fas fa-quote-left"></i> My Philosophy</h4>
                     <p><strong>Strategy First. Execution Second. Results Always.</strong></p>
-                    <p>Before any tactic is deployed, I invest significant time in understanding your book deeply. What is it truly about at its core? Who is the ideal reader? What does the competitive landscape look like in your genre? Only after those questions are answered with clarity and depth do I begin building the strategic framework.</p>
+                    <p>Before any tactic is deployed, I invest significant time in understanding your book deeply. What is it truly about at its core? Who is the ideal reader? What does the competitive landscape look like in your genre?</p>
                 </div>
-
                 <h3>What I Specialize In</h3>
                 <div class="about-specialties">
                     <div class="specialty-item"><i class="fas fa-check"></i> Book Launch Strategy and Execution</div>
@@ -2782,9 +2020,7 @@
         </div>
     </section>
 
-    <!-- ============================================
-         PROFILE HIGHLIGHT (Second appearance)
-         ============================================ -->
+    <!-- PROFILE HIGHLIGHT -->
     <div class="profile-highlight">
         <div class="profile-highlight-inner reveal">
             <img src="Tolu Profile.jpeg" alt="Tolu Dankworth" class="profile-highlight-img">
@@ -2796,565 +2032,158 @@
         </div>
     </div>
 
-    <!-- ============================================
-         SERVICES SECTION
-         ============================================ -->
+    <!-- SERVICES -->
     <section class="section" id="services">
         <div class="section-label reveal">Services</div>
-        <h2 class="section-title reveal">Specialized Book Marketing Services for Authors <span class="crimson">Ready to Stop Being Invisible</span></h2>
+        <h2 class="section-title reveal">Specialized Book Marketing Services for Authors <span class="accent">Ready to Stop Being Invisible</span></h2>
         <p class="section-subtitle reveal">Every service offered at Tolu Marketing Hub has been developed exclusively for authors and the publishing industry. To receive full details about any service, simply send your inquiry to tolumarketinghub@gmail.com.</p>
-
         <div class="services-grid">
-            <div class="service-card reveal stagger-1">
-                <div class="service-icon"><i class="fas fa-rocket"></i></div>
-                <h3 class="service-title">Book Launch Strategy and Full Execution</h3>
-                <p class="service-desc">A book launch is one of the most critical moments in your publishing journey. This service provides the complete strategic architecture and execution management for your entire book launch campaign.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Pre-launch awareness strategy</li>
-                    <li><i class="fas fa-check"></i> Launch day execution plan</li>
-                    <li><i class="fas fa-check"></i> Post-launch momentum strategy</li>
-                    <li><i class="fas fa-check"></i> Platform-specific promotion</li>
-                    <li><i class="fas fa-check"></i> Launch timeline and calendar</li>
-                    <li><i class="fas fa-check"></i> Full documentation via email</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service-card reveal stagger-2">
-                <div class="service-icon"><i class="fab fa-amazon"></i></div>
-                <h3 class="service-title">Amazon Book Page Optimization and Discoverability</h3>
-                <p class="service-desc">Having your book listed on Amazon is not the same as having your book positioned to succeed on Amazon. Every element of your page will be transformed into an active sales tool.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Algorithm and discoverability audit</li>
-                    <li><i class="fas fa-check"></i> Strategic keyword research</li>
-                    <li><i class="fas fa-check"></i> Conversion-focused description rewrite</li>
-                    <li><i class="fas fa-check"></i> Category and subcategory strategy</li>
-                    <li><i class="fas fa-check"></i> Author Central optimization</li>
-                    <li><i class="fas fa-check"></i> Full audit report via email</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service-card reveal stagger-3">
-                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
-                <h3 class="service-title">Author Brand Positioning and Identity Development</h3>
-                <p class="service-desc">Readers do not just buy books. They buy into authors. This service helps you define who you are as an author and how to communicate your brand powerfully across all platforms.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Author identity deep dive</li>
-                    <li><i class="fas fa-check"></i> Ideal reader profile development</li>
-                    <li><i class="fas fa-check"></i> Brand positioning statement</li>
-                    <li><i class="fas fa-check"></i> Voice and tone guidelines</li>
-                    <li><i class="fas fa-check"></i> Platform presence strategy</li>
-                    <li><i class="fas fa-check"></i> Multi-context bio development</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service-card reveal stagger-1">
-                <div class="service-icon"><i class="fas fa-share-alt"></i></div>
-                <h3 class="service-title">Social Media Marketing Strategy for Authors</h3>
-                <p class="service-desc">Stop posting into the void. This service builds a platform-specific social media strategy designed to grow a genuine, engaged audience that actually buys your books.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Platform research and recommendation</li>
-                    <li><i class="fas fa-check"></i> Audience research and targeting</li>
-                    <li><i class="fas fa-check"></i> Content pillars development</li>
-                    <li><i class="fas fa-check"></i> Audience growth strategy</li>
-                    <li><i class="fas fa-check"></i> Content calendar framework</li>
-                    <li><i class="fas fa-check"></i> Full strategy document via email</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service-card reveal stagger-2">
-                <div class="service-icon"><i class="fas fa-envelope-open-text"></i></div>
-                <h3 class="service-title">Email Marketing System for Authors</h3>
-                <p class="service-desc">Social media platforms come and go. Algorithms change without warning. But your email list belongs to you always. Build a reader list that becomes your most powerful marketing asset.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Email platform strategy and setup</li>
-                    <li><i class="fas fa-check"></i> List building strategy</li>
-                    <li><i class="fas fa-check"></i> Reader magnet concept development</li>
-                    <li><i class="fas fa-check"></i> Welcome sequence strategy</li>
-                    <li><i class="fas fa-check"></i> Newsletter strategy framework</li>
-                    <li><i class="fas fa-check"></i> Book promotion email sequences</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service-card reveal stagger-3">
-                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                <h3 class="service-title">Long-Term Book Sales System Design</h3>
-                <p class="service-desc">A book that sells for two weeks is a launch. A book that sells for two years is a system. Build a sustainable marketing machine that keeps your book selling consistently.</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check"></i> Long-term visibility architecture</li>
-                    <li><i class="fas fa-check"></i> Evergreen marketing strategy</li>
-                    <li><i class="fas fa-check"></i> Review and social proof building</li>
-                    <li><i class="fas fa-check"></i> Reader community strategy</li>
-                    <li><i class="fas fa-check"></i> Back-catalogue integration</li>
-                    <li><i class="fas fa-check"></i> Quarterly review framework</li>
-                </ul>
-                <a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a>
-            </div>
+            <div class="service-card reveal stagger-1"><div class="service-icon"><i class="fas fa-rocket"></i></div><h3 class="service-title">Book Launch Strategy and Full Execution</h3><p class="service-desc">A book launch is one of the most critical moments in your publishing journey. This service provides the complete strategic architecture and execution management for your entire book launch campaign.</p><ul class="service-features"><li><i class="fas fa-check"></i> Pre-launch awareness strategy</li><li><i class="fas fa-check"></i> Launch day execution plan</li><li><i class="fas fa-check"></i> Post-launch momentum strategy</li><li><i class="fas fa-check"></i> Platform-specific promotion</li><li><i class="fas fa-check"></i> Launch timeline and calendar</li><li><i class="fas fa-check"></i> Full documentation via email</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
+            <div class="service-card reveal stagger-2"><div class="service-icon"><i class="fab fa-amazon"></i></div><h3 class="service-title">Amazon Book Page Optimization and Discoverability</h3><p class="service-desc">Having your book listed on Amazon is not the same as having your book positioned to succeed on Amazon. Every element of your page will be transformed into an active sales tool.</p><ul class="service-features"><li><i class="fas fa-check"></i> Algorithm and discoverability audit</li><li><i class="fas fa-check"></i> Strategic keyword research</li><li><i class="fas fa-check"></i> Conversion-focused description rewrite</li><li><i class="fas fa-check"></i> Category and subcategory strategy</li><li><i class="fas fa-check"></i> Author Central optimization</li><li><i class="fas fa-check"></i> Full audit report via email</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
+            <div class="service-card reveal stagger-3"><div class="service-icon"><i class="fas fa-bullseye"></i></div><h3 class="service-title">Author Brand Positioning and Identity Development</h3><p class="service-desc">Readers do not just buy books. They buy into authors. This service helps you define who you are as an author and how to communicate your brand powerfully across all platforms.</p><ul class="service-features"><li><i class="fas fa-check"></i> Author identity deep dive</li><li><i class="fas fa-check"></i> Ideal reader profile development</li><li><i class="fas fa-check"></i> Brand positioning statement</li><li><i class="fas fa-check"></i> Voice and tone guidelines</li><li><i class="fas fa-check"></i> Platform presence strategy</li><li><i class="fas fa-check"></i> Multi-context bio development</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
+            <div class="service-card reveal stagger-1"><div class="service-icon"><i class="fas fa-share-alt"></i></div><h3 class="service-title">Social Media Marketing Strategy for Authors</h3><p class="service-desc">Stop posting into the void. This service builds a platform-specific social media strategy designed to grow a genuine, engaged audience that actually buys your books.</p><ul class="service-features"><li><i class="fas fa-check"></i> Platform research and recommendation</li><li><i class="fas fa-check"></i> Audience research and targeting</li><li><i class="fas fa-check"></i> Content pillars development</li><li><i class="fas fa-check"></i> Audience growth strategy</li><li><i class="fas fa-check"></i> Content calendar framework</li><li><i class="fas fa-check"></i> Full strategy document via email</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
+            <div class="service-card reveal stagger-2"><div class="service-icon"><i class="fas fa-envelope-open-text"></i></div><h3 class="service-title">Email Marketing System for Authors</h3><p class="service-desc">Social media platforms come and go. Algorithms change without warning. But your email list belongs to you always. Build a reader list that becomes your most powerful marketing asset.</p><ul class="service-features"><li><i class="fas fa-check"></i> Email platform strategy and setup</li><li><i class="fas fa-check"></i> List building strategy</li><li><i class="fas fa-check"></i> Reader magnet concept development</li><li><i class="fas fa-check"></i> Welcome sequence strategy</li><li><i class="fas fa-check"></i> Newsletter strategy framework</li><li><i class="fas fa-check"></i> Book promotion email sequences</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
+            <div class="service-card reveal stagger-3"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3 class="service-title">Long-Term Book Sales System Design</h3><p class="service-desc">A book that sells for two weeks is a launch. A book that sells for two years is a system. Build a sustainable marketing machine that keeps your book selling consistently.</p><ul class="service-features"><li><i class="fas fa-check"></i> Long-term visibility architecture</li><li><i class="fas fa-check"></i> Evergreen marketing strategy</li><li><i class="fas fa-check"></i> Review and social proof building</li><li><i class="fas fa-check"></i> Reader community strategy</li><li><i class="fas fa-check"></i> Back-catalogue integration</li><li><i class="fas fa-check"></i> Quarterly review framework</li></ul><a href="#contact" class="service-cta">Send Inquiry <i class="fas fa-arrow-right"></i></a></div>
         </div>
     </section>
 
-    <!-- ============================================
-         HOW IT WORKS SECTION
-         ============================================ -->
+    <!-- PROCESS -->
     <section class="section-full process-section" id="process">
         <div class="section" style="padding-top: 0;">
             <div class="section-label reveal">How It Works</div>
-            <h2 class="section-title reveal">A Professional Process Built for <span class="crimson">Clarity and Results</span></h2>
-            <p class="section-subtitle reveal">Every project at Tolu Marketing Hub follows a clear, structured process. All communication and project management is handled exclusively via email to ensure full documentation, transparency, and accountability at every stage.</p>
-
+            <h2 class="section-title reveal">A Professional Process Built for <span class="accent">Clarity and Results</span></h2>
+            <p class="section-subtitle reveal">Every project at Tolu Marketing Hub follows a clear, structured process. All communication is handled exclusively via email to ensure full documentation, transparency, and accountability.</p>
             <div class="process-timeline">
-                <div class="process-step reveal">
-                    <div class="process-step-number">01</div>
-                    <div class="process-step-content">
-                        <div class="process-step-label">Initial Inquiry</div>
-                        <h3 class="process-step-title">Tell Me About Your Project</h3>
-                        <p class="process-step-desc">Send a detailed email to tolumarketinghub@gmail.com with your book title, genre, description, current marketing situation, goals, and the service you are interested in. The more detail you provide, the more valuable my response will be. Expected response time is within 48 business hours.</p>
-                    </div>
-                </div>
-
-                <div class="process-step reveal">
-                    <div class="process-step-number">02</div>
-                    <div class="process-step-content">
-                        <div class="process-step-label">Review and Proposal</div>
-                        <h3 class="process-step-title">I Review and Respond With a Comprehensive Proposal</h3>
-                        <p class="process-step-desc">I invest proper time in reviewing every detail you have shared. I research your book's genre landscape. I assess the specific opportunities and challenges relevant to your situation. Then I send you a comprehensive proposal via email that covers my recommended approach, scope of work, and structured timeline.</p>
-                    </div>
-                </div>
-
-                <div class="process-step reveal">
-                    <div class="process-step-number">03</div>
-                    <div class="process-step-content">
-                        <div class="process-step-label">Agreement</div>
-                        <h3 class="process-step-title">Everything Confirmed in Writing Before Any Action Is Taken</h3>
-                        <p class="process-step-desc">Once you review the proposal and are ready to proceed, the agreement process is completed entirely via email. No verbal agreements. Everything that is agreed upon is confirmed in writing so that both parties have a clear, documented record of exactly what has been committed to.</p>
-                    </div>
-                </div>
-
-                <div class="process-step reveal">
-                    <div class="process-step-number">04</div>
-                    <div class="process-step-content">
-                        <div class="process-step-label">Execution</div>
-                        <h3 class="process-step-title">You Are Never Left in the Dark</h3>
-                        <p class="process-step-desc">Throughout the execution phase, you will receive regular, structured email updates detailing exactly what work has been completed, what is currently in progress, what is coming next, and any decisions that require your input. Every update is a permanent part of your project documentation.</p>
-                    </div>
-                </div>
-
-                <div class="process-step reveal">
-                    <div class="process-step-number">05</div>
-                    <div class="process-step-content">
-                        <div class="process-step-label">Delivery</div>
-                        <h3 class="process-step-title">Delivered With Full Documentation</h3>
-                        <p class="process-step-desc">Your project concludes with a comprehensive delivery report via email including a complete summary of all work completed, strategic rationale behind every decision, results and observations, and specific actionable recommendations for your next steps in your book marketing journey.</p>
-                    </div>
-                </div>
+                <div class="process-step reveal"><div class="process-step-number">01</div><div class="process-step-content"><div class="process-step-label">Initial Inquiry</div><h3 class="process-step-title">Tell Me About Your Project</h3><p class="process-step-desc">Send a detailed email to tolumarketinghub@gmail.com with your book title, genre, description, current marketing situation, goals, and the service you are interested in. Expected response time is within 48 business hours.</p></div></div>
+                <div class="process-step reveal"><div class="process-step-number">02</div><div class="process-step-content"><div class="process-step-label">Review and Proposal</div><h3 class="process-step-title">I Review and Respond With a Comprehensive Proposal</h3><p class="process-step-desc">I invest proper time in reviewing every detail you have shared. I research your book's genre landscape and assess the specific opportunities and challenges. Then I send you a comprehensive proposal via email.</p></div></div>
+                <div class="process-step reveal"><div class="process-step-number">03</div><div class="process-step-content"><div class="process-step-label">Agreement</div><h3 class="process-step-title">Everything Confirmed in Writing Before Any Action Is Taken</h3><p class="process-step-desc">Once you review the proposal and are ready to proceed, the agreement process is completed entirely via email. No verbal agreements. Everything is confirmed in writing.</p></div></div>
+                <div class="process-step reveal"><div class="process-step-number">04</div><div class="process-step-content"><div class="process-step-label">Execution</div><h3 class="process-step-title">You Are Never Left in the Dark</h3><p class="process-step-desc">Throughout the execution phase, you will receive regular, structured email updates detailing exactly what work has been completed, what is in progress, what is coming next, and any decisions that require your input.</p></div></div>
+                <div class="process-step reveal"><div class="process-step-number">05</div><div class="process-step-content"><div class="process-step-label">Delivery</div><h3 class="process-step-title">Delivered With Full Documentation</h3><p class="process-step-desc">Your project concludes with a comprehensive delivery report via email including a complete summary of all work completed, strategic rationale, results, and specific actionable recommendations for next steps.</p></div></div>
             </div>
-
             <div class="email-system-section reveal">
-                <h3 class="section-title" style="font-size: 1.8rem;">Why Everything Is Handled <span class="crimson">Via Email</span></h3>
+                <h3 class="section-title" style="font-size: 1.8rem;">Why Everything Is Handled <span class="accent">Via Email</span></h3>
                 <div class="section-divider"></div>
                 <p class="section-subtitle" style="margin-bottom: 10px;">This system has been designed to protect your project and ensure the highest level of professional accountability.</p>
-
                 <div class="email-benefits-grid">
-                    <div class="email-benefit">
-                        <div class="email-benefit-icon"><i class="fas fa-file-alt"></i></div>
-                        <div>
-                            <h4>Complete Documentation</h4>
-                            <p>Every word written is preserved exactly as it was written. There is no ambiguity. The written record is the definitive record.</p>
-                        </div>
-                    </div>
-                    <div class="email-benefit">
-                        <div class="email-benefit-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div>
-                            <h4>Full Accountability</h4>
-                            <p>Every commitment is timestamped and documented. Nothing that was committed to can be quietly forgotten or reinterpreted.</p>
-                        </div>
-                    </div>
-                    <div class="email-benefit">
-                        <div class="email-benefit-icon"><i class="fas fa-bullseye"></i></div>
-                        <div>
-                            <h4>Precision in Communication</h4>
-                            <p>Writing forces clarity. Vague verbal statements become precise written ones. Instructions are clear, specific, and unambiguous.</p>
-                        </div>
-                    </div>
-                    <div class="email-benefit">
-                        <div class="email-benefit-icon"><i class="fas fa-archive"></i></div>
-                        <div>
-                            <h4>Permanent Professional Archive</h4>
-                            <p>At the end of your project, you will have a complete written archive of every communication, strategy, and deliverable.</p>
-                        </div>
-                    </div>
+                    <div class="email-benefit"><div class="email-benefit-icon"><i class="fas fa-file-alt"></i></div><div><h4>Complete Documentation</h4><p>Every word written is preserved exactly as it was written. There is no ambiguity. The written record is the definitive record.</p></div></div>
+                    <div class="email-benefit"><div class="email-benefit-icon"><i class="fas fa-shield-alt"></i></div><div><h4>Full Accountability</h4><p>Every commitment is timestamped and documented. Nothing can be quietly forgotten or reinterpreted.</p></div></div>
+                    <div class="email-benefit"><div class="email-benefit-icon"><i class="fas fa-bullseye"></i></div><div><h4>Precision in Communication</h4><p>Writing forces clarity. Vague verbal statements become precise written ones. Instructions are clear, specific, and unambiguous.</p></div></div>
+                    <div class="email-benefit"><div class="email-benefit-icon"><i class="fas fa-archive"></i></div><div><h4>Permanent Professional Archive</h4><p>At the end of your project, you will have a complete written archive of every communication, strategy, and deliverable.</p></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         FEATURED AUTHORS SECTION
-         ============================================ -->
+    <!-- FEATURED AUTHORS -->
     <section class="section-full authors-section" id="authors">
         <div class="section" style="padding-top: 0;">
             <div class="section-label reveal">Featured Authors</div>
-            <h2 class="section-title reveal">Authors Who Trusted the Process and <span class="crimson">Saw the Results</span></h2>
-            <p class="section-subtitle reveal">Every author featured here came to Tolu Marketing Hub with a book that deserved more visibility, more readers, and more recognition. Each one went through a structured, fully documented marketing process built specifically around their book, their genre, and their goals.</p>
-
+            <h2 class="section-title reveal">Authors Who Trusted the Process and <span class="accent">Saw the Results</span></h2>
+            <p class="section-subtitle reveal">Every author featured here went through a structured, fully documented marketing process built specifically around their book, their genre, and their goals.</p>
             <div class="authors-grid">
-                <!-- AUTHOR 1: Tim Weaver -->
-                <div class="author-card reveal stagger-1">
-                    <div class="author-card-header">
-                        <div class="author-photo-wrapper">
-                            <img src="Tim Profile.webp" alt="Tim Weaver" class="author-photo">
-                        </div>
-                        <h3 class="author-name">Tim Weaver</h3>
-                        <div class="author-email">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:authortimweaver@hotmail.com" style="color: var(--crimson-light);">authortimweaver@hotmail.com</a>
-                        </div>
-                    </div>
-                    <div class="author-card-body">
-                        <div class="author-book-container">
-                            <a href="https://www.amazon.com/stores/Tim-Weaver/author/B003Z3ATFC" target="_blank" class="author-book-link" title="View on Amazon">
-                                <img src="Tim Book.jpg" alt="Tim Weaver Book" class="author-book-img">
-                            </a>
-                            <br>
-                            <a href="https://www.amazon.com/stores/Tim-Weaver/author/B003Z3ATFC" target="_blank" class="amazon-badge">
-                                <i class="fab fa-amazon"></i> View on Amazon
-                            </a>
-                        </div>
-                        <div class="author-testimonial">
-                            <p>"Tolu Marketing Hub brought a level of strategic precision to my book marketing that I had never experienced before. The structured, documented approach gave me complete confidence throughout the entire process."</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AUTHOR 2: Nicola Yoon -->
-                <div class="author-card reveal stagger-2">
-                    <div class="author-card-header">
-                        <div class="author-photo-wrapper">
-                            <img src="Nicola Profile.webp" alt="Nicola Yoon" class="author-photo">
-                        </div>
-                        <h3 class="author-name">Nicola Yoon</h3>
-                        <div class="author-email">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:nicolayoonbooks@atomicmail.io" style="color: var(--crimson-light);">nicolayoonbooks@atomicmail.io</a>
-                        </div>
-                    </div>
-                    <div class="author-card-body">
-                        <div class="author-book-container">
-                            <a href="https://www.amazon.com/stores/Nicola-Yoon/author/B00SV7W4HO" target="_blank" class="author-book-link" title="View on Amazon">
-                                <img src="Nicola Book.webp" alt="Nicola Yoon Book" class="author-book-img">
-                            </a>
-                            <br>
-                            <a href="https://www.amazon.com/stores/Nicola-Yoon/author/B00SV7W4HO" target="_blank" class="amazon-badge">
-                                <i class="fab fa-amazon"></i> View on Amazon
-                            </a>
-                        </div>
-                        <div class="author-testimonial">
-                            <p>"What impressed me most was how deeply Tolu understood both my book and my audience. Every recommendation was specific, strategic, and backed by clear reasoning. The results exceeded my expectations."</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AUTHOR 3: Abby Jimenez -->
-                <div class="author-card reveal stagger-3">
-                    <div class="author-card-header">
-                        <div class="author-photo-wrapper">
-                            <img src="Abby Profile.avif" alt="Abby Jimenez" class="author-photo">
-                        </div>
-                        <h3 class="author-name">Abby Jimenez</h3>
-                        <div class="author-email">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:officiabbyjimenez@proton.me" style="color: var(--crimson-light);">officiabbyjimenez@proton.me</a>
-                        </div>
-                    </div>
-                    <div class="author-card-body">
-                        <div class="author-book-container">
-                            <a href="https://www.amazon.com/stores/Abby-Jimenez/author/B07JM74FHP" target="_blank" class="author-book-link" title="View on Amazon">
-                                <img src="Abby Book.jpg" alt="Abby Jimenez Book" class="author-book-img">
-                            </a>
-                            <br>
-                            <a href="https://www.amazon.com/stores/Abby-Jimenez/author/B07JM74FHP" target="_blank" class="amazon-badge">
-                                <i class="fab fa-amazon"></i> View on Amazon
-                            </a>
-                        </div>
-                        <div class="author-testimonial">
-                            <p>"The email-based project system was a game changer. I had a complete documented record of every strategy, every decision, and every result. Tolu Marketing Hub operates at a level of professionalism that is rare in this industry."</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="author-card reveal stagger-1"><div class="author-card-header"><div class="author-photo-wrapper"><img src="Tim Profile.webp" alt="Tim Weaver" class="author-photo"></div><h3 class="author-name">Tim Weaver</h3><div class="author-email"><i class="fas fa-envelope"></i><a href="mailto:authortimweaver@hotmail.com">authortimweaver@hotmail.com</a></div></div><div class="author-card-body"><div class="author-book-container"><a href="https://www.amazon.com/stores/Tim-Weaver/author/B003Z3ATFC" target="_blank" class="author-book-link"><img src="Tim Book.jpg" alt="Tim Weaver Book" class="author-book-img"></a><br><a href="https://www.amazon.com/stores/Tim-Weaver/author/B003Z3ATFC" target="_blank" class="amazon-badge"><i class="fab fa-amazon"></i> View on Amazon</a></div><div class="author-testimonial"><p>"Tolu Marketing Hub brought a level of strategic precision to my book marketing that I had never experienced before. The structured, documented approach gave me complete confidence throughout the entire process."</p></div></div></div>
+                <div class="author-card reveal stagger-2"><div class="author-card-header"><div class="author-photo-wrapper"><img src="Nicola Profile.webp" alt="Nicola Yoon" class="author-photo"></div><h3 class="author-name">Nicola Yoon</h3><div class="author-email"><i class="fas fa-envelope"></i><a href="mailto:nicolayoonbooks@atomicmail.io">nicolayoonbooks@atomicmail.io</a></div></div><div class="author-card-body"><div class="author-book-container"><a href="https://www.amazon.com/stores/Nicola-Yoon/author/B00SV7W4HO" target="_blank" class="author-book-link"><img src="Nicola Book.webp" alt="Nicola Yoon Book" class="author-book-img"></a><br><a href="https://www.amazon.com/stores/Nicola-Yoon/author/B00SV7W4HO" target="_blank" class="amazon-badge"><i class="fab fa-amazon"></i> View on Amazon</a></div><div class="author-testimonial"><p>"What impressed me most was how deeply Tolu understood both my book and my audience. Every recommendation was specific, strategic, and backed by clear reasoning. The results exceeded my expectations."</p></div></div></div>
+                <div class="author-card reveal stagger-3"><div class="author-card-header"><div class="author-photo-wrapper"><img src="Abby Profile.avif" alt="Abby Jimenez" class="author-photo"></div><h3 class="author-name">Abby Jimenez</h3><div class="author-email"><i class="fas fa-envelope"></i><a href="mailto:officiabbyjimenez@proton.me">officiabbyjimenez@proton.me</a></div></div><div class="author-card-body"><div class="author-book-container"><a href="https://www.amazon.com/stores/Abby-Jimenez/author/B07JM74FHP" target="_blank" class="author-book-link"><img src="Abby Book.jpg" alt="Abby Jimenez Book" class="author-book-img"></a><br><a href="https://www.amazon.com/stores/Abby-Jimenez/author/B07JM74FHP" target="_blank" class="amazon-badge"><i class="fab fa-amazon"></i> View on Amazon</a></div><div class="author-testimonial"><p>"The email-based project system was a game changer. I had a complete documented record of every strategy, every decision, and every result. Tolu Marketing Hub operates at a level of professionalism that is rare in this industry."</p></div></div></div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         WHY CHOOSE SECTION
-         ============================================ -->
+    <!-- WHY CHOOSE -->
     <section class="section">
         <div class="section-label reveal">Why Choose Us</div>
-        <h2 class="section-title reveal">What You Are Actually Getting <span class="crimson">When You Work With Me</span></h2>
-        <p class="section-subtitle reveal">This is not general marketing dressed up with book covers. This is what makes Tolu Marketing Hub fundamentally different from any other marketing service you have ever encountered.</p>
-
+        <h2 class="section-title reveal">What You Are Actually Getting <span class="accent">When You Work With Me</span></h2>
+        <p class="section-subtitle reveal">This is what makes Tolu Marketing Hub fundamentally different from any other marketing service you have ever encountered.</p>
         <div class="why-grid">
-            <div class="why-card reveal stagger-1">
-                <div class="why-card-icon"><i class="fas fa-book"></i></div>
-                <h3>A Specialist Who Understands Your Industry</h3>
-                <p>Understanding Amazon's algorithm, knowing how to write a book description that converts, understanding genre-specific reader behavior, and knowing which platforms work best for which types of books are all things that require dedicated expertise. At Tolu Marketing Hub, this expertise is the entire foundation.</p>
-            </div>
-            <div class="why-card reveal stagger-2">
-                <div class="why-card-icon"><i class="fas fa-file-signature"></i></div>
-                <h3>A Fully Documented, Accountable System</h3>
-                <p>Every project is managed via email from the very first inquiry to the final delivery report. You always have a written record of what was discussed, what was agreed upon, what was executed, and what was delivered. There is never any ambiguity. Everything is documented.</p>
-            </div>
-            <div class="why-card reveal stagger-3">
-                <div class="why-card-icon"><i class="fas fa-fingerprint"></i></div>
-                <h3>Strategy Built for Your Specific Book</h3>
-                <p>A literary fiction novel requires a completely different marketing approach than a self-help business book. Every strategy is built specifically for your book, your genre, your audience, and your goals. You will never receive a recycled template.</p>
-            </div>
-            <div class="why-card reveal stagger-4">
-                <div class="why-card-icon"><i class="fas fa-comments"></i></div>
-                <h3>Communication That Respects Your Intelligence</h3>
-                <p>Every email you receive will be structured, easy to understand, and directly relevant to your project. You will never be left confused about what is happening, what comes next, or what decisions need to be made. Your time is valuable.</p>
-            </div>
-            <div class="why-card reveal stagger-5">
-                <div class="why-card-icon"><i class="fas fa-seedling"></i></div>
-                <h3>A Long-Term Perspective on Your Success</h3>
-                <p>The goal is never just to generate a spike in sales that disappears after two weeks. The goal is to build marketing systems that create lasting visibility, sustainable sales, and a growing readership that follows your work for years.</p>
-            </div>
-            <div class="why-card reveal stagger-6">
-                <div class="why-card-icon"><i class="fas fa-lock"></i></div>
-                <h3>Protection of Your Project</h3>
-                <p>When everything is documented, nothing can be disputed. You always know exactly what you engaged for and you always have the written evidence of exactly what was delivered. That is the professional standard every serious author project deserves.</p>
-            </div>
+            <div class="why-card reveal stagger-1"><div class="why-card-icon"><i class="fas fa-book"></i></div><h3>A Specialist Who Understands Your Industry</h3><p>Understanding Amazon's algorithm, knowing how to write a book description that converts, understanding genre-specific reader behavior, and knowing which platforms work best for which types of books are all things that require dedicated expertise.</p></div>
+            <div class="why-card reveal stagger-2"><div class="why-card-icon"><i class="fas fa-file-signature"></i></div><h3>A Fully Documented, Accountable System</h3><p>Every project is managed via email from the very first inquiry to the final delivery report. You always have a written record of what was discussed, what was agreed upon, what was executed, and what was delivered.</p></div>
+            <div class="why-card reveal stagger-3"><div class="why-card-icon"><i class="fas fa-fingerprint"></i></div><h3>Strategy Built for Your Specific Book</h3><p>A literary fiction novel requires a completely different marketing approach than a self-help business book. Every strategy is built specifically for your book, your genre, your audience, and your goals.</p></div>
+            <div class="why-card reveal stagger-4"><div class="why-card-icon"><i class="fas fa-comments"></i></div><h3>Communication That Respects Your Intelligence</h3><p>Every email you receive will be structured, easy to understand, and directly relevant to your project. You will never be left confused about what is happening or what comes next.</p></div>
+            <div class="why-card reveal stagger-5"><div class="why-card-icon"><i class="fas fa-seedling"></i></div><h3>A Long-Term Perspective on Your Success</h3><p>The goal is to build marketing systems that create lasting visibility, sustainable sales, and a growing readership that follows your work for years. Not just a two-week spike.</p></div>
+            <div class="why-card reveal stagger-6"><div class="why-card-icon"><i class="fas fa-lock"></i></div><h3>Protection of Your Project</h3><p>When everything is documented, nothing can be disputed. You always know exactly what you engaged for and you always have the written evidence of exactly what was delivered.</p></div>
         </div>
     </section>
 
-    <!-- ============================================
-         CTA BANNER
-         ============================================ -->
+    <!-- CTA BANNER -->
     <section class="cta-banner">
         <div class="cta-banner-bg"></div>
         <div class="cta-banner-content reveal">
-            <h2>Your Book Has Already Done Its Part. <span class="crimson">Now It Is Time for the Marketing to Do Its Part.</span></h2>
-            <p>You spent months, possibly years, writing your book. You poured your knowledge, your creativity, your experience, and your passion into every page. That work deserves to be seen. It deserves to reach the readers who need it. Tolu Marketing Hub exists to be the bridge between the book you have written and the audience that is waiting for it.</p>
-            <a href="#contact" class="btn-primary">
-                <i class="fas fa-envelope"></i> Start Your Project Today
-            </a>
-            <div class="limited-notice">
-                <i class="fas fa-exclamation-circle"></i>
-                Limited number of author projects accepted per quarter
-            </div>
+            <h2>Your Book Has Already Done Its Part. <span class="accent">Now It Is Time for the Marketing to Do Its Part.</span></h2>
+            <p>You spent months, possibly years, writing your book. You poured your knowledge, your creativity, your experience, and your passion into every page. That work deserves to be seen. Tolu Marketing Hub exists to be the bridge between the book you have written and the audience that is waiting for it.</p>
+            <a href="#contact" class="btn-primary"><i class="fas fa-envelope"></i> Start Your Project Today</a>
+            <div class="limited-notice"><i class="fas fa-exclamation-circle"></i> Limited number of author projects accepted per quarter</div>
         </div>
     </section>
 
-    <!-- ============================================
-         CONTACT SECTION
-         ============================================ -->
+    <!-- CONTACT -->
     <section class="section-full contact-section" id="contact">
         <div class="contact-content section">
             <div class="contact-info reveal-left">
                 <div class="section-label">Get In Touch</div>
-                <h2 class="section-title">Your Book's Marketing Transformation <span class="crimson">Begins With One Email</span></h2>
+                <h2 class="section-title">Your Book's Marketing Transformation <span class="accent">Begins With One Email</span></h2>
                 <div class="section-divider"></div>
-
-                <p>Every project at Tolu Marketing Hub begins with a direct, professional email inquiry. There are no automated chatbots to navigate and no phone lines to call. Just a direct, professional connection to a specialist who will read every word of your inquiry carefully and respond with the same depth and seriousness that your project deserves.</p>
-
-                <a href="mailto:tolumarketinghub@gmail.com" class="contact-email-display">
-                    <i class="fas fa-envelope"></i>
-                    <span class="email-text">tolumarketinghub@gmail.com</span>
-                </a>
-
+                <p>Every project at Tolu Marketing Hub begins with a direct, professional email inquiry. There are no automated chatbots to navigate and no phone lines to call. Just a direct, professional connection to a specialist who will read every word of your inquiry carefully.</p>
+                <a href="mailto:tolumarketinghub@gmail.com" class="contact-email-display"><i class="fas fa-envelope"></i><span class="email-text">tolumarketinghub@gmail.com</span></a>
                 <div class="contact-details-list">
-                    <div class="contact-detail-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Response Time</h4>
-                            <p>Within 48 business hours, you will receive a personal, professional response from Tolu Dankworth directly.</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail-item">
-                        <i class="fas fa-user-shield"></i>
-                        <div>
-                            <h4>Direct Communication</h4>
-                            <p>Not from an assistant. Not from an automated system. From the specialist who will be working directly on your project.</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail-item">
-                        <i class="fas fa-calendar-check"></i>
-                        <div>
-                            <h4>Limited Availability</h4>
-                            <p>Tolu Marketing Hub accepts a strictly limited number of author projects per quarter. Early inquiry is strongly recommended.</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail-item">
-                        <i class="fas fa-file-contract"></i>
-                        <div>
-                            <h4>Everything Documented</h4>
-                            <p>All projects, communications, agreements, and deliverables are handled exclusively via email for full accountability.</p>
-                        </div>
-                    </div>
+                    <div class="contact-detail-item"><i class="fas fa-clock"></i><div><h4>Response Time</h4><p>Within 48 business hours, you will receive a personal, professional response from Tolu Dankworth directly.</p></div></div>
+                    <div class="contact-detail-item"><i class="fas fa-user-shield"></i><div><h4>Direct Communication</h4><p>Not from an assistant. Not from an automated system. From the specialist who will be working directly on your project.</p></div></div>
+                    <div class="contact-detail-item"><i class="fas fa-calendar-check"></i><div><h4>Limited Availability</h4><p>Tolu Marketing Hub accepts a strictly limited number of author projects per quarter. Early inquiry is strongly recommended.</p></div></div>
+                    <div class="contact-detail-item"><i class="fas fa-file-contract"></i><div><h4>Everything Documented</h4><p>All projects, communications, agreements, and deliverables are handled exclusively via email for full accountability.</p></div></div>
                 </div>
             </div>
-
             <div class="contact-form-container reveal-right">
                 <h3 class="contact-form-title">Send Your Project Inquiry</h3>
                 <p class="contact-form-subtitle">Fill in the details below and your inquiry will be delivered directly to my inbox.</p>
-
                 <form action="https://formspree.io/f/xrerjoog" method="POST" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="authorName">Author / Pen Name</label>
-                            <input type="text" id="authorName" name="authorName" placeholder="If different from above">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="bookTitle">Book Title *</label>
-                            <input type="text" id="bookTitle" name="bookTitle" placeholder="Your book title" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="genre">Genre *</label>
-                            <input type="text" id="genre" name="genre" placeholder="e.g. Self-Help, Fiction, etc." required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service or general inquiry</option>
-                            <option value="Book Launch Strategy">Book Launch Strategy and Execution</option>
-                            <option value="Amazon Optimization">Amazon Book Page Optimization</option>
-                            <option value="Author Brand Positioning">Author Brand Positioning</option>
-                            <option value="Social Media Strategy">Social Media Marketing Strategy</option>
-                            <option value="Email Marketing System">Email Marketing System</option>
-                            <option value="Long-Term Sales System">Long-Term Book Sales System</option>
-                            <option value="General Inquiry">General Inquiry</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="currentSituation">Current Marketing Situation</label>
-                        <textarea id="currentSituation" name="currentSituation" placeholder="Tell me about your current marketing situation. What have you tried? What has worked? What has not?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="goals">Your Goals *</label>
-                        <textarea id="goals" name="goals" placeholder="What does success look like to you? Be as specific as possible about what you are hoping to achieve." required></textarea>
-                    </div>
-
-                    <button type="submit" class="form-submit" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i> Send Project Inquiry
-                    </button>
-                    <p class="form-notice">
-                        <i class="fas fa-lock"></i> Your information is kept strictly confidential. All communication handled via email.
-                    </p>
+                    <div class="form-row"><div class="form-group"><label for="fullName">Full Name *</label><input type="text" id="fullName" name="fullName" placeholder="Your full name" required></div><div class="form-group"><label for="authorName">Author / Pen Name</label><input type="text" id="authorName" name="authorName" placeholder="If different from above"></div></div>
+                    <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
+                    <div class="form-row"><div class="form-group"><label for="bookTitle">Book Title *</label><input type="text" id="bookTitle" name="bookTitle" placeholder="Your book title" required></div><div class="form-group"><label for="genre">Genre *</label><input type="text" id="genre" name="genre" placeholder="e.g. Self-Help, Fiction, etc." required></div></div>
+                    <div class="form-group"><label for="service">Service Interested In</label><select id="service" name="service"><option value="">Select a service or general inquiry</option><option value="Book Launch Strategy">Book Launch Strategy and Execution</option><option value="Amazon Optimization">Amazon Book Page Optimization</option><option value="Author Brand Positioning">Author Brand Positioning</option><option value="Social Media Strategy">Social Media Marketing Strategy</option><option value="Email Marketing System">Email Marketing System</option><option value="Long-Term Sales System">Long-Term Book Sales System</option><option value="General Inquiry">General Inquiry</option></select></div>
+                    <div class="form-group"><label for="currentSituation">Current Marketing Situation</label><textarea id="currentSituation" name="currentSituation" placeholder="Tell me about your current marketing situation. What have you tried? What has worked? What has not?"></textarea></div>
+                    <div class="form-group"><label for="goals">Your Goals *</label><textarea id="goals" name="goals" placeholder="What does success look like to you? Be as specific as possible." required></textarea></div>
+                    <button type="submit" class="form-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Project Inquiry</button>
+                    <p class="form-notice"><i class="fas fa-lock"></i> Your information is kept strictly confidential. All communication handled via email.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>TOLU MARKETING HUB</h3>
                 <p class="tagline">Specialized Book Marketing for Authors Who Are Serious About Results</p>
-                <p>All project communication, strategy development, and project management is conducted exclusively via email. This ensures complete documentation, full transparency, and total accountability on every project from inquiry to final delivery.</p>
-                <a href="mailto:tolumarketinghub@gmail.com" class="footer-email">
-                    <i class="fas fa-envelope"></i> tolumarketinghub@gmail.com
-                </a>
-                <div class="footer-professional">
-                    <p><i class="fas fa-exclamation-circle"></i> Tolu Marketing Hub accepts a strictly limited number of author projects per quarter. Early inquiry is strongly recommended.</p>
-                </div>
+                <p>All project communication, strategy development, and project management is conducted exclusively via email. This ensures complete documentation, full transparency, and total accountability on every project.</p>
+                <a href="mailto:tolumarketinghub@gmail.com" class="footer-email"><i class="fas fa-envelope"></i> tolumarketinghub@gmail.com</a>
+                <div class="footer-professional"><p><i class="fas fa-exclamation-circle"></i> Tolu Marketing Hub accepts a strictly limited number of author projects per quarter. Early inquiry is strongly recommended.</p></div>
             </div>
-
-            <div class="footer-column">
-                <h4>Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#process">How It Works</a></li>
-                    <li><a href="#authors">Featured Authors</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#services">Book Launch Strategy</a></li>
-                    <li><a href="#services">Amazon Optimization</a></li>
-                    <li><a href="#services">Author Branding</a></li>
-                    <li><a href="#services">Social Media Strategy</a></li>
-                    <li><a href="#services">Email Marketing</a></li>
-                    <li><a href="#services">Long-Term Sales</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Professional Standards</h4>
-                <ul class="footer-links">
-                    <li><a href="#process">Email-Only Communication</a></li>
-                    <li><a href="#process">Full Documentation</a></li>
-                    <li><a href="#process">Structured Process</a></li>
-                    <li><a href="#process">Complete Accountability</a></li>
-                    <li><a href="#process">Limited Intake</a></li>
-                    <li><a href="#contact">48hr Response</a></li>
-                </ul>
-            </div>
+            <div class="footer-column"><h4>Navigation</h4><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#process">How It Works</a></li><li><a href="#authors">Featured Authors</a></li><li><a href="#contact">Contact</a></li></ul></div>
+            <div class="footer-column"><h4>Services</h4><ul class="footer-links"><li><a href="#services">Book Launch Strategy</a></li><li><a href="#services">Amazon Optimization</a></li><li><a href="#services">Author Branding</a></li><li><a href="#services">Social Media Strategy</a></li><li><a href="#services">Email Marketing</a></li><li><a href="#services">Long-Term Sales</a></li></ul></div>
+            <div class="footer-column"><h4>Professional Standards</h4><ul class="footer-links"><li><a href="#process">Email-Only Communication</a></li><li><a href="#process">Full Documentation</a></li><li><a href="#process">Structured Process</a></li><li><a href="#process">Complete Accountability</a></li><li><a href="#process">Limited Intake</a></li><li><a href="#contact">48hr Response</a></li></ul></div>
         </div>
-
         <div class="footer-bottom">
             <p>&copy; 2025 Tolu Marketing Hub. All Rights Reserved. | Tolu Dankworth | Book Specialist Marketer</p>
-            <div class="footer-bottom-links">
-                <a href="mailto:tolumarketinghub@gmail.com">tolumarketinghub@gmail.com</a>
-            </div>
+            <div class="footer-bottom-links"><a href="mailto:tolumarketinghub@gmail.com">tolumarketinghub@gmail.com</a></div>
         </div>
     </footer>
 
-    <!-- ============================================
-         BACK TO TOP BUTTON
-         ============================================ -->
-    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- ============================================
-         JAVASCRIPT
-         ============================================ -->
+    <!-- JAVASCRIPT -->
     <script>
-        // ===== PRELOADER =====
+        // PRELOADER
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 2800);
+            setTimeout(function() { document.getElementById('preloader').classList.add('hidden'); }, 2800);
         });
 
-        // ===== PARTICLES =====
+        // PARTICLES
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = 35;
-            const types = ['particle-crimson', 'particle-light', 'particle-white'];
-
-            for (let i = 0; i < particleCount; i++) {
+            const types = ['particle-blue', 'particle-light', 'particle-yellow', 'particle-white'];
+            for (let i = 0; i < 35; i++) {
                 const particle = document.createElement('div');
-                const type = types[Math.floor(Math.random() * types.length)];
-                particle.classList.add('particle', type);
+                particle.classList.add('particle', types[Math.floor(Math.random() * types.length)]);
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
                 particle.style.animationDelay = (Math.random() * 15) + 's';
@@ -3366,198 +2195,91 @@
         }
         createParticles();
 
-        // ===== CURSOR FOLLOWER (Desktop Only) =====
+        // CURSOR
         if (window.innerWidth > 992) {
             const cursor = document.getElementById('cursorFollower');
             cursor.style.display = 'block';
-
-            document.addEventListener('mousemove', function(e) {
-                cursor.style.left = e.clientX - 15 + 'px';
-                cursor.style.top = e.clientY - 15 + 'px';
-            });
-
+            document.addEventListener('mousemove', function(e) { cursor.style.left = e.clientX - 15 + 'px'; cursor.style.top = e.clientY - 15 + 'px'; });
             document.querySelectorAll('a, button, .service-card, .pillar-card, .author-card, .why-card').forEach(function(el) {
-                el.addEventListener('mouseenter', function() {
-                    cursor.style.transform = 'scale(2)';
-                    cursor.style.opacity = '0.8';
-                    cursor.style.borderColor = '#e74c3c';
-                });
-                el.addEventListener('mouseleave', function() {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.opacity = '0.5';
-                    cursor.style.borderColor = '#c0392b';
-                });
+                el.addEventListener('mouseenter', function() { cursor.style.transform = 'scale(2)'; cursor.style.opacity = '0.7'; cursor.style.borderColor = '#fbbf24'; });
+                el.addEventListener('mouseleave', function() { cursor.style.transform = 'scale(1)'; cursor.style.opacity = '0.4'; cursor.style.borderColor = '#3b82f6'; });
             });
         }
 
-        // ===== NAVBAR SCROLL =====
-        const navbar = document.getElementById('navbar');
-        const backToTop = document.getElementById('backToTop');
-
+        // NAVBAR
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 100);
+            document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ===== MOBILE MENU =====
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-            document.getElementById('mobileMenuBtn').classList.toggle('active');
-        }
+        // MOBILE MENU
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); document.getElementById('mobileMenuBtn').classList.toggle('active'); }
+        function closeMenu() { document.getElementById('navLinks').classList.remove('active'); document.getElementById('mobileMenuBtn').classList.remove('active'); }
 
-        function closeMenu() {
-            document.getElementById('navLinks').classList.remove('active');
-            document.getElementById('mobileMenuBtn').classList.remove('active');
-        }
-
-        // ===== SCROLL REVEAL =====
+        // SCROLL REVEAL
         function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            const windowHeight = window.innerHeight;
-
-            reveals.forEach(function(element) {
-                const elementTop = element.getBoundingClientRect().top;
-                const revealPoint = 120;
-
-                if (elementTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
-                }
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 120) el.classList.add('active');
             });
         }
-
         window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', function() {
-            setTimeout(revealOnScroll, 3000);
-        });
+        window.addEventListener('load', function() { setTimeout(revealOnScroll, 3000); });
 
-        // ===== SMOOTH SCROLL =====
+        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                }
+                if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
             });
         });
 
-        // ===== FORM SUBMISSION =====
+        // FORM
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             const btn = document.getElementById('submitBtn');
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.style.opacity = '0.7';
-
             setTimeout(function() {
                 btn.innerHTML = '<i class="fas fa-check"></i> Inquiry Sent Successfully!';
-                btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
                 btn.style.opacity = '1';
-
-                setTimeout(function() {
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Project Inquiry';
-                    btn.style.background = '';
-                }, 4000);
+                setTimeout(function() { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Project Inquiry'; btn.style.background = ''; }, 4000);
             }, 2000);
         });
 
-        // ===== COUNTER ANIMATION =====
-        function animateCounters() {
-            const counters = document.querySelectorAll('.reality-stat-number');
-            counters.forEach(function(counter) {
-                const target = counter.innerText;
-                if (counter.dataset.animated) return;
-
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting && !counter.dataset.animated) {
-                            counter.dataset.animated = 'true';
-
-                            if (target.includes('M')) {
-                                let count = 0;
-                                const interval = setInterval(function() {
-                                    count++;
-                                    counter.innerText = count + 'M+';
-                                    if (count >= 4) clearInterval(interval);
-                                }, 200);
-                            } else if (target.includes('<')) {
-                                let count = 0;
-                                const interval = setInterval(function() {
-                                    count += 5;
-                                    counter.innerText = '<' + count;
-                                    if (count >= 100) clearInterval(interval);
-                                }, 50);
-                            } else if (target.includes('%')) {
-                                const num = parseInt(target);
-                                let count = 0;
-                                const interval = setInterval(function() {
-                                    count += 2;
-                                    counter.innerText = count + '%';
-                                    if (count >= num) {
-                                        counter.innerText = num + '%';
-                                        clearInterval(interval);
-                                    }
-                                }, 30);
-                            }
-                        }
-                    });
-                }, { threshold: 0.5 });
-
-                observer.observe(counter);
-            });
-        }
-        animateCounters();
-
-        // ===== ACTIVE NAV HIGHLIGHT =====
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id], .section-full[id]');
-            const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
-            let current = '';
-
-            sections.forEach(function(section) {
-                const sectionTop = section.offsetTop - 200;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(function(link) {
-                link.style.color = '';
-                if (link.getAttribute('href') === '#' + current) {
-                    link.style.color = '#e74c3c';
-                }
-            });
+        // COUNTERS
+        document.querySelectorAll('.reality-stat-number').forEach(function(counter) {
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !counter.dataset.animated) {
+                        counter.dataset.animated = 'true';
+                        const target = counter.innerText;
+                        if (target.includes('M')) { let c = 0; const i = setInterval(function() { c++; counter.innerText = c + 'M+'; if (c >= 4) clearInterval(i); }, 200); }
+                        else if (target.includes('<')) { let c = 0; const i = setInterval(function() { c += 5; counter.innerText = '<' + c; if (c >= 100) clearInterval(i); }, 50); }
+                        else if (target.includes('%')) { const n = parseInt(target); let c = 0; const i = setInterval(function() { c += 2; counter.innerText = c + '%'; if (c >= n) { counter.innerText = n + '%'; clearInterval(i); } }, 30); }
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(counter);
         });
 
-        // ===== 3D TILT EFFECT =====
+        // ACTIVE NAV
+        window.addEventListener('scroll', function() {
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(function(s) { if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); });
+            document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(function(link) { link.style.color = link.getAttribute('href') === '#' + current ? '#fbbf24' : ''; });
+        });
+
+        // TILT
         if (window.innerWidth > 992) {
             document.querySelectorAll('.service-card, .pillar-card, .author-card').forEach(function(card) {
                 card.addEventListener('mousemove', function(e) {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 30;
-                    const rotateY = (centerX - x) / 30;
-
-                    card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-10px)';
+                    const r = card.getBoundingClientRect();
+                    card.style.transform = 'perspective(1000px) rotateX(' + ((e.clientY - r.top - r.height/2)/30) + 'deg) rotateY(' + ((r.width/2 - (e.clientX - r.left))/30) + 'deg) translateY(-10px)';
                 });
-
-                card.addEventListener('mouseleave', function() {
-                    card.style.transform = '';
-                });
+                card.addEventListener('mouseleave', function() { card.style.transform = ''; });
             });
         }
     </script>
-
 </body>
 </html>
